@@ -1,0 +1,19 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-3 mb-5">
+      <h5 class="text-center bg-light mt-5">業種編集</h5>
+   </div>
+ </div>
+
+  <div class="row">
+    <div class="col-8 mb-5">
+      <%= form_with model: @sector, url: admin_sector_path, local: true do |f| %>
+        <%= f.label :業種名, class: "font-weight-bold" %>
+        <%= f.text_field :name, class: "offset-1" %>
+        <%= f.submit "変更を保存", class: "btn btn-success offset-1" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>

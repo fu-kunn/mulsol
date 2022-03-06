@@ -1,0 +1,39 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-3 mb-5">
+      <h5 class="text-center bg-light mt-5">企業一覧・追加</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 mb-5">
+      <%= form_with model: @sector, url: admin_sectors_path, local: true do |f| %>
+        <%= f.label :業種, class: "font-weight-bold" %>
+        <%= f.text_field :name, placeholder: "業種名", class: "offset-1" %>
+        <%= f.submit "新規登録", class: "btn btn-success offset-1" %>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-5 mb-5">
+      <table class="table ">
+        <thead>
+          <tr class="bg-light">
+            <th>業種名</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @sectors.each do |sector| %>
+            <tr>
+              <td><%= sector.name %></td>
+              <td><%= link_to "編集する", edit_admin_sector_path(sector), class: "btn btn-success offset-6" %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
