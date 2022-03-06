@@ -11,3 +11,11 @@ import "channels"
 Rails.start()
 Turbolinks.start()
 ActiveStorage.start()
+
+// bootstrapの導入
+import "jquery";
+import "popper.js";
+import "bootstrap";
+import "../stylesheets/application"
+// fontawesomeの導入
+import '@fortawesome/fontawesome-free/js/all'

@@ -59,3 +59,7 @@ gem 'dotenv-rails'
 group :production do
   gem 'mysql2'
 end
+
+# Gemの追加
+gem 'devise'
+gem 'kaminari','~> 1.2.1'
