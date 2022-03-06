@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  namespace :public do
+    get 'customers/top'
+  end
   namespace :admin do
     get 'sectors/index'
     get 'sectors/edit'
@@ -24,6 +27,11 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     resources :sectors, only: [:index, :create, :edit, :update]
+  end
+
+  scope module: :public do
+    root to: 'customers#top'
+    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
