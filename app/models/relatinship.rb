@@ -1,0 +1,2 @@
+class Relatinship < ApplicationRecord
+end
