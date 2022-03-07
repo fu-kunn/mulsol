@@ -31,7 +31,14 @@ Rails.application.routes.draw do
 
   scope module: :public do
     root to: 'customers#top'
-    resources :customers, only: [:show, :edit, :update, :unsubscribe, :withdraw]
+
+    resources :customers, only: [:index, :edit,:update] do
+      collection do
+        get :mypage
+        get :unsubscribe
+        patch :withdraw
+      end
+    end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end

@@ -1,0 +1,71 @@
+<div class="container">
+  <div class="row mt-4">
+    <div class="col-3 mt-3 mb-3">
+      <h5 class="text-center bg-light">企業詳細ページ</h5>
+    </div>
+  </div>
+
+<div class="row mt-4">
+    <div class="col-lg-6">
+      <div class="row">
+<table>
+  <tr>
+    <th>会社名 :</th>
+    <td>
+      <%= link_to mypage_customers_path(@customer)  do %>
+        <%= @customer.company_name %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>業種   :</th>
+    <td>
+    </td>
+  </tr>
+  <tr>
+  <th>課題</th>
+  <td></td>
+</tr>
+<tr>
+  <th>ニーズ</th>
+  <td></td>
+</tr>
+</table>
+    </div>
+    </div>
+
+    <div class="col-lg-4">
+      <div class="row">
+<table>
+<tr>
+  <th>企業名</th>
+  <td><%= @customer.company_name %></td>
+</tr>
+<tr>
+  <th>企業名フリガナ</th>
+  <td><%= @customer.company_name_kana %></td>
+</tr>
+<tr>
+  <th>郵便番号</th>
+  <td><%= @customer.post_code %></td>
+</tr>
+<tr>
+  <th>住所</th>
+  <td><%= @customer.address %></td>
+</tr>
+<tr>
+  <th>代表者</th>
+  <td><%= @customer.first_name %><%= @customer.last_name %></td>
+</tr>
+<tr>
+  <th>代表者連絡先</th>
+  <td><%= @customer.tel %></td>
+</tr>
+
+</table>
+
+</div>
+</div>
+</div>
+
+<%= link_to "編集", edit_customer_path(@customer) %>
