@@ -22,14 +22,20 @@
     <td>
     </td>
   </tr>
+  <% @issue.each do |issue| %>
   <tr>
-  <th>課題</th>
-  <td></td>
-</tr>
-<tr>
   <th>ニーズ</th>
-  <td></td>
-</tr>
+  <td><%= issue.needs %></td>
+  </tr>
+  <tr>
+    <th>
+      <%= link_to edit_issue_path(@issue)  do %>
+      課題
+      <% end %>
+    </th>
+    <td><%= issue.challenge %></td>
+  </tr>
+  <% end %>
 </table>
     </div>
     </div>

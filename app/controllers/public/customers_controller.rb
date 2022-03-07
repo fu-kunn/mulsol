@@ -9,6 +9,7 @@ class Public::CustomersController < ApplicationController
 
   def mypage
     @customer = current_customer
+    @issue = Issue.all
   end
 
   def edit
@@ -41,4 +42,5 @@ class Public::CustomersController < ApplicationController
   def customer_params
     params.require(:customer).permit(:company_name, :company_name_kana, :first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :tel, :withdraw, :email)
   end
+
 end
