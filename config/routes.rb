@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'chats/index'
+    get 'chats/show'
+  end
+  namespace :public do
     get 'customers/top'
   end
   namespace :admin do
@@ -32,6 +36,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'customers#top'
 
+    resources :chats, only: [:index, :show]
     resources :customers, only: [:index, :edit,:update] do
       collection do
         get :mypage
