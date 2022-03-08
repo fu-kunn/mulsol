@@ -19,10 +19,6 @@
              <%= f.text_field :company_name_kana %>
           </div>
           <div class="form-group col-xs-9">
-            <%= f.label :業種名, class: "col-sm-2" %>
-            <%= f.collection_select :sector_id, Sector.all, :id, :name, include_blank: "--選択してください--", class: "col-sm-5" %>
-          </div>
-          <div class="form-group col-xs-9">
             <%= f.label :郵便番号, class: "col-sm-2" %>
             <%= f.text_field :post_code %>
           </div>
@@ -61,5 +57,5 @@
     </div>
 
     <%= link_to 'ニーズ・課題登録はこちらへ', new_issue_path %>
-
+    <%= link_to '業種の登録はこちらへ', new_sector_path %>
   </div>

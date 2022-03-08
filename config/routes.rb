@@ -40,6 +40,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'customers#top'
 
+    resources :sectors, only: [:new, :create, :edit, :update]
     resources :issues, only: [:new, :create, :edit, :update]
     resources :chats, only: [:index, :show]
 
