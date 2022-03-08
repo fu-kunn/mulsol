@@ -7,7 +7,7 @@ class Public::SectorsController < ApplicationController
   def create
     @sector = Sector.new
     if @sector.save
-      redirect_to mypage_customers_path, notice: "You have created book successfully."
+      redirect_to customer_path, notice: "You have created book successfully."
     else
       redirect_to root_path
     end

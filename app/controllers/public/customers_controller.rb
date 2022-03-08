@@ -9,11 +9,11 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-  # ログインしていないニーズと課題が表示される
+  # ログインしていないcustomerのニーズと課題が表示される
   def show
     @customer = Customer.find(params[:id])
-    @issues = Issue.all
-    # @issue = @customer.issue
+    # @issues = Issue.all
+    @issues = @customer.issues
     # @customer = current_customer
     # @issue = Issue.find(params[:id])
   end
