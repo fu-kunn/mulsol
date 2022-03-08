@@ -14,6 +14,19 @@ class Public::IssuesController < ApplicationController
     end
   end
 
+  def edit
+    @issue = Issue.find(params[:id])
+  end
+
+  def update
+    @issue = Issue.find(params[:id])
+    if @issue.update(issue_params)
+      redirect_to mypage_customers_path
+    else
+      render :edit
+    end
+  end
+
   def issue_params
     params.require(:issue).permit(:needs, :challenge)
   end

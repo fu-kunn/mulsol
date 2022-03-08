@@ -11,6 +11,8 @@
 
 
 <% @customers.each do |customer| %>
+<!--<= link_to mypage_customers_path(customer.id)  do %>-->
+<!--showへの変更-->
 <%= link_to mypage_customers_path(customer.id)  do %>
   <%= customer.company_name %>
 <% end %>

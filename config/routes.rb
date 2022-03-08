@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   namespace :public do
+    get 'sectors/new'
+    get 'sectors/edit'
+  end
+  namespace :public do
     get 'chats/index'
     get 'chats/show'
   end
@@ -38,7 +42,9 @@ Rails.application.routes.draw do
 
     resources :issues, only: [:new, :create, :edit, :update]
     resources :chats, only: [:index, :show]
-    resources :customers, only: [:index, :edit,:update] do
+
+    # ニーズ・課題の表示訂正のためshowアクションを
+    resources :customers, only: [:index, :edit, :update, :show] do
       collection do
         get :mypage
         get :unsubscribe

@@ -7,9 +7,20 @@ class Public::CustomersController < ApplicationController
     @customers = Customer.all
   end
 
+  # ログインしていないニーズと課題が表示される
+  # def show
+  #   @customer = Customer.find(params[:id])
+  #   @issues = Issue.all
+  #   # @issue = @customer.issue
+  #   # @customer = current_customer
+  #   # @issue = Issue.find(params[:id])
+  # end
+
   def mypage
     @customer = current_customer
-    @issue = Issue.all
+    @issues = Issue.all
+    # ログインしていないニーズと課題が表示される
+    # @issues = @customer.issues.all
   end
 
   def edit
@@ -29,12 +40,12 @@ class Public::CustomersController < ApplicationController
     @customer = current_customer
   end
 
-  # def withdraw
-  #   @customer = current_customer
-  #   @customer.update(withdraw: true)
-  #   reset_session
-  #   redirect_to root_path
-  # end
+  def withdraw
+    @customer = current_customer
+    @customer.update(withdraw: true)
+    reset_session
+    redirect_to root_path
+  end
 
 
   private
