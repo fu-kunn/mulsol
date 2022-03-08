@@ -5,9 +5,10 @@ class Public::SectorsController < ApplicationController
   end
 
   def create
-    @sector = Sector.new
+    @sector = Sector.new(sector_params)
+    # @sector.name = ????
     if @sector.save
-      redirect_to customer_path, notice: "You have created book successfully."
+      redirect_to customer_path, notice: "You have created successfully."
     else
       redirect_to root_path
     end

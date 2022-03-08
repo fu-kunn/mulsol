@@ -7,23 +7,13 @@ class Public::CustomersController < ApplicationController
     @customers = Customer.all
     # mypageからshowに変更
     @customer = current_customer
+    @issues = @customer.issues
   end
 
-  # ログインしていないcustomerのニーズと課題が表示される
   def show
     @customer = Customer.find(params[:id])
-    # @issues = Issue.all
     @issues = @customer.issues
-    # @customer = current_customer
-    # @issue = Issue.find(params[:id])
   end
-
-  # def mypage
-  #   @customer = current_customer
-  #   @issues = Issue.all
-  #   # ログインしていないニーズと課題が表示される
-  #   # @issues = @customer.issues.all
-  # end
 
   def edit
     @customer = current_customer

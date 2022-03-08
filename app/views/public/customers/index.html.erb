@@ -9,10 +9,7 @@
   <% end %>
 </ul>
 
-
 <% @customers.each do |customer| %>
-<!--<= link_to mypage_customers_path(customer.id)  do %>-->
-<!--showへの変更-->
 <table>
   <tr>
     <th>企業名 :</th>
@@ -26,16 +23,16 @@
     <th>業種</th>
     <td></td>
   </tr>
+  <% @issues.each do |issue| %>
   <tr>
     <th>ニーズ</th>
-    <td></td>
+    <td><%= issue.needs %></td>
   </tr>
   <tr>
     <th>課題</th>
     <td></td>
   </tr>
+  <% end %>
 </table>
 
 <% end %>
-
-<%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>

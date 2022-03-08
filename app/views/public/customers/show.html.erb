@@ -22,7 +22,6 @@
             <!--<td><= @customer.sector.name %></td>-->
           </tr>
 
-          <!--< @customer.issues.each do |issue| %>-->
           <% @issues.each do |issue| %>
           <tr>
             <th>ニーズ</th>
@@ -30,7 +29,11 @@
           </tr>
           <tr>
             <th>
+            <% if @customer.id == current_customer.id %>
             <%= link_to edit_issue_path(issue.id)  do %>
+            課題
+            <% end %>
+            <% else %>
             課題
             <% end %>
             </th>
@@ -74,5 +77,7 @@
 </div>
 
 <!--ログインしているユーザーのみ編集を表示する-->
-<%= link_to "編集", edit_customer_path(@customer) %>
+<% if @customer.id == current_customer.id %>
+  <%= link_to "編集", edit_customer_path(@customer) %>
+<% end %>
 <%= link_to "チャット", chats_path(@customer), class: "btn btn-success" %>
