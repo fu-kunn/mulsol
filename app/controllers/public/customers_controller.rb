@@ -5,23 +5,25 @@ class Public::CustomersController < ApplicationController
   def index
     @sectors = Sector.all
     @customers = Customer.all
+    # mypageからshowに変更
+    @customer = current_customer
   end
 
   # ログインしていないニーズと課題が表示される
-  # def show
-  #   @customer = Customer.find(params[:id])
-  #   @issues = Issue.all
-  #   # @issue = @customer.issue
-  #   # @customer = current_customer
-  #   # @issue = Issue.find(params[:id])
-  # end
-
-  def mypage
-    @customer = current_customer
+  def show
+    @customer = Customer.find(params[:id])
     @issues = Issue.all
-    # ログインしていないニーズと課題が表示される
-    # @issues = @customer.issues.all
+    # @issue = @customer.issue
+    # @customer = current_customer
+    # @issue = Issue.find(params[:id])
   end
+
+  # def mypage
+  #   @customer = current_customer
+  #   @issues = Issue.all
+  #   # ログインしていないニーズと課題が表示される
+  #   # @issues = @customer.issues.all
+  # end
 
   def edit
     @customer = current_customer
@@ -30,7 +32,7 @@ class Public::CustomersController < ApplicationController
   def update
     @customer = current_customer
     if @customer.update(customer_params)
-      redirect_to mypage_customers_path
+      redirect_to customer_path
     else
       render :edit
     end

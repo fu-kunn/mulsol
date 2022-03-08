@@ -23,6 +23,12 @@
             <div>
               <%= f.submit "編集内容を保存", class: 'btn btn-success offset-2' %>
             </div>
+            <div>
+              <!--ログインしているユーザーのみ削除-->
+              <!--< if @customer.id == current_customer.id %>-->
+                <%= link_to 'Destroy', @issue, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_issue_#{@issue.id}"%></td>
+              <!--< end %>-->
+            </div>
           </div>
           <% end %>
         </form>

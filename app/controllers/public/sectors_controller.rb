@@ -5,8 +5,7 @@ class Public::SectorsController < ApplicationController
   end
 
   def create
-    @sector = Sector.new(sector_params)
-    @sector.customer_id = current_customer.id
+    @sector = Sector.new
     if @sector.save
       redirect_to mypage_customers_path, notice: "You have created book successfully."
     else
@@ -14,18 +13,18 @@ class Public::SectorsController < ApplicationController
     end
   end
 
-  def edit
-    @sector = Sector.find(params[:id])
-  end
+  # def edit
+  #   @sector = Sector.find(params[:id])
+  # end
 
-  def update
-    @sector = Sector.find(params[:id])
-    if @sector.update(sector_params)
-      redirect_to mypage_customers_path
-    else
-      render :edit
-    end
-  end
+  # def update
+  #   @sector = Sector.find(params[:id])
+  #   if @sector.update(sector_params)
+  #     redirect_to mypage_customers_path
+  #   else
+  #     render :edit
+  #   end
+  # end
 
 
   def sector_params

@@ -1,11 +1,11 @@
 <%= form_with(model:@issue, url:issues_path, method: :post, local:true) do |f| %>
-      <div class="form-group col-xs-9">
+    <div class="form-group col-xs-9">
       <%= f.label :ニーズ, class: "col-sm-2" %>
       <%= f.text_area :needs %>
-      </div>
-      <div class="form-group col-xs-9">
+    </div>
+    <div class="form-group col-xs-9">
       <%= f.label :課題, class: "col-sm-2" %>
       <%= f.text_area :challenge %>
-      </div>
-    <%= f.submit "編集内容を保存", class: 'btn btn-success offset-2' %>
-    <% end %>
+    </div>
+  <%= f.submit "編集内容を保存", class: 'btn btn-success offset-2' %>
+<% end %>

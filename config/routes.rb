@@ -1,21 +1,5 @@
 Rails.application.routes.draw do
-  namespace :public do
-    get 'sectors/new'
-    get 'sectors/edit'
-  end
-  namespace :public do
-    get 'chats/index'
-    get 'chats/show'
-  end
-  namespace :public do
-    get 'customers/top'
-  end
-  namespace :admin do
-    get 'sectors/index'
-    get 'sectors/edit'
-  end
-  get 'sectors/index'
-  get 'sectors/edit'
+
   namespace :admin do
     get 'homes/top'
   end
@@ -41,7 +25,7 @@ Rails.application.routes.draw do
     root to: 'customers#top'
 
     resources :sectors, only: [:new, :create, :edit, :update]
-    resources :issues, only: [:new, :create, :edit, :update]
+    resources :issues, only: [:new, :create, :edit, :update, :destroy]
     resources :chats, only: [:index, :show]
 
     # ニーズ・課題の表示訂正のためshowアクションを

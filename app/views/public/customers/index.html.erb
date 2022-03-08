@@ -13,9 +13,29 @@
 <% @customers.each do |customer| %>
 <!--<= link_to mypage_customers_path(customer.id)  do %>-->
 <!--showへの変更-->
-<%= link_to mypage_customers_path(customer.id)  do %>
-  <%= customer.company_name %>
-<% end %>
+<table>
+  <tr>
+    <th>企業名 :</th>
+    <td>
+      <%= link_to customer_path(customer.id)  do %>
+        <%= customer.company_name %>
+      <% end %>
+    </td>
+  </tr>
+  <tr>
+    <th>業種</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>ニーズ</th>
+    <td></td>
+  </tr>
+  <tr>
+    <th>課題</th>
+    <td></td>
+  </tr>
+</table>
+
 <% end %>
 
 <%= link_to "ログアウト", destroy_customer_session_path, method: :delete %>
