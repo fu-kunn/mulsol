@@ -63,3 +63,7 @@ end
 # Gemの追加
 gem 'devise'
 gem 'kaminari','~> 1.2.1'
+
+# device日本語化
+gem 'devise-i18n'
+gem 'devise-i18n-views'

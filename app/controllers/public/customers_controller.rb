@@ -5,7 +5,8 @@ class Public::CustomersController < ApplicationController
   def index
     @sectors = Sector.all
     @customers = Customer.all
-    # mypageからshowに変更
+    # 投稿した人に紐づくissueを表示
+    # 最新の投稿1つだけを表示
     @customer = current_customer
     @issues = @customer.issues
   end
