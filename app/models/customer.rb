@@ -6,4 +6,5 @@ class Customer < ApplicationRecord
 
   has_many :issues, dependent: :destroy
   has_many :sectors, dependent: :destroy
+  has_many :chats, dependent: :destroy
 end
