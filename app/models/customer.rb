@@ -9,6 +9,23 @@ class Customer < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_one_attached :image
 
+  # フォローをした、されたの関係
+  has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
+  has_many :reverse_of_relationships, class_name: "Relationship", foreign_key: "followed_id", dependent: :destroy
+
+  # フォローしたときの処理
+  def follow(customer_id)
+    relationships.create(followed_id: customer_id)
+  end
+  # フォローを外すときの処理
+  def unfollow(user_id)
+    relationships.find_by(followed_id: customer_id).destroy
+  end
+  # フォローしているか判定
+  def following?(customer)
+    followings.include?(customer)
+  end
+
   # def get_image
   #   unless image.attached?
   #     file_path = Rails.root.join('app/assets/images/no_image.jpg')
