@@ -10,6 +10,9 @@
       <div class="col-12 mt-3">
         <%= form_with(model:@customer, url:customer_path, local:true) do |f| %>
         <form>
+          <div class="form-group col-xs-9 ml-5">
+            <%= link_to 'ニーズ・課題登録はこちらへ', new_issue_path %>
+          </div>
           <div class="form-group col-xs-9">
             <%= f.label :企業名,class: "col-sm-2" %>
              <%= f.text_field :company_name, autofocus: true %>
@@ -18,6 +21,7 @@
             <%= f.label :企業名フリガナ,class: "col-sm-2" %>
             <%= f.text_field :company_name_kana %>
           </div>
+          <!--業種の登録-->
           <div class="form-group col-xs-9">
             <%= f.label :業種名, class: "col-sm-2" %>
             <%= f.collection_select :sector_id, Sector.all, :id, :name, include_blank: "--選択してください--", class: "col-sm-5" %>
@@ -48,7 +52,10 @@
             <%= f.label :メールアドレス, class: "col-sm-2" %>
             <%= f.email_field :email %>
           </div>
-
+          <div class="form-group col-xs-9">
+            <%= f.label :画像, class: "col-sm-2" %>
+            <%= f.file_field :image, accept: "image/*" %>
+          </div>
           <div class="col-12">
             <div>
               <%= f.submit "編集内容を保存", class: 'btn btn-success offset-2' %>
@@ -60,6 +67,7 @@
       </div>
     </div>
 
-    <%= link_to 'ニーズ・課題登録はこちらへ', new_issue_path %>
-    <%= link_to '業種の登録はこちらへ', new_sector_path %>
+
+    <!--業種登録は編集画面で行う予定-->
+    <!--<= link_to '業種の登録はこちらへ', new_sector_path %>-->
   </div>

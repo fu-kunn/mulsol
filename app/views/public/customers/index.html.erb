@@ -9,8 +9,14 @@
   <% end %>
 </ul>
 
-<% @customers.each do |customer| %>
 <table>
+<% @customers.each do |customer| %>
+  <!--企業に紐づく画像-->
+  <!--<tr>-->
+  <!--  <th>-->
+  <!--    <= image_tag @customer.image, size: "200x200" %>-->
+  <!--  </th>-->
+  <!--</tr>-->
   <tr>
     <th>企業名 :</th>
     <td>
@@ -23,7 +29,8 @@
     <th>業種</th>
     <td></td>
   </tr>
-  <% @issues.each do |issue| %>
+    <!--最新の一件のみを表示-->
+    <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
   <tr>
     <th>ニーズ</th>
     <td><%= issue.needs %></td>
@@ -33,6 +40,10 @@
     <td></td>
   </tr>
   <% end %>
-</table>
-
 <% end %>
+  <tr>
+    <th>
+      <%= paginate @customers %>
+    </th>
+  </tr>
+</table>

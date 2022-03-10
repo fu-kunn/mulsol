@@ -10,12 +10,18 @@
       <div class="row">
         <table>
           <tr>
-            <th>会社名 :</th>
-            <td>
-              <%= link_to mypage_customers_path(@customer)  do %>
-                <%= @customer.company_name %>
+            <th>
+              <% if @customer.image.attached? %>
+                <%= image_tag @customer.image, size: "200x200" %>
+              <% else %>
+                <%= image_tag 'no_image', size: "200x200" %>
               <% end %>
-            </td>
+            </th>
+          </tr>
+          <tr>
+            <th>
+              <%= @customer.company_name %>のニーズ・課題
+            </th>
           </tr>
           <tr>
             <th>業種   :</th>
@@ -30,11 +36,11 @@
           <tr>
             <th>
             <% if @customer.id == current_customer.id %>
-            <%= link_to edit_issue_path(issue.id)  do %>
-            課題
-            <% end %>
+              <%= link_to edit_issue_path(issue.id)  do %>
+                課題
+              <% end %>
             <% else %>
-            課題
+              課題
             <% end %>
             </th>
             <td><%= issue.challenge %></td>
@@ -47,6 +53,9 @@
     <div class="col-lg-4">
       <div class="row">
         <table>
+          <tr>
+            <th>企業情報</th>
+          </tr>
           <tr>
             <th>企業名</th>
             <td><%= @customer.company_name %></td>

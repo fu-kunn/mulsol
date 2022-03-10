@@ -25,10 +25,13 @@
             </div>
             <div>
               <!--ログインしているユーザーのみ削除-->
-              <!--< if @customer.id == current_customer.id %>-->
-                <%= link_to 'Destroy', @issue, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_issue_#{@issue.id}"%></td>
-              <!--< end %>-->
+              <% if @customer == current_customer.id %>
+                <%= link_to '削除', @issue, method: :delete, data: { confirm: '本当に消しますか？' }, class: "btn btn-sm btn-danger destroy_issue_#{@issue.id}" %></td>
+              <% end %>
             </div>
+            <!--企業の詳細ページ-->
+            <%= link_to '戻る', :back %>
+
           </div>
           <% end %>
         </form>

@@ -4,11 +4,8 @@ class Public::CustomersController < ApplicationController
 
   def index
     @sectors = Sector.all
-    @customers = Customer.all
-    # 投稿した人に紐づくissueを表示
-    # 最新の投稿1つだけを表示
+    @customers = Customer.order(created_at: :desc).limit(2).page(params[:page]).per(2)
     @customer = current_customer
-    @issues = @customer.issues
   end
 
   def show
@@ -44,7 +41,7 @@ class Public::CustomersController < ApplicationController
   private
 
   def customer_params
-    params.require(:customer).permit(:company_name, :company_name_kana, :first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :tel, :withdraw, :email, :sector_id)
+    params.require(:customer).permit(:company_name, :company_name_kana, :first_name, :last_name, :first_name_kana, :last_name_kana, :post_code, :address, :tel, :withdraw, :email, :sector_id, :image)
   end
 
 end

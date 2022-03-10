@@ -17,9 +17,8 @@ class Public::IssuesController < ApplicationController
 
   def edit
     @issue = Issue.find(params[:id])
-    
     # ログインしているユーザーのみ削除
-    # @customer = @issue.customer_id
+    @customer = @issue.customer_id
   end
 
   def update
