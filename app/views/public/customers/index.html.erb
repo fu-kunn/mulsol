@@ -27,7 +27,8 @@
   </tr>
   <tr>
     <th>業種</th>
-    <td></td>
+    <!--業種の正しい表示-->
+    <td><%= customer.sectors.name %></td>
   </tr>
     <!--最新の一件のみを表示-->
     <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
