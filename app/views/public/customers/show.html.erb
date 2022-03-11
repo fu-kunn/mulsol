@@ -25,9 +25,17 @@
           </tr>
           <tr>
             <th>業種   :</th>
-            <td><%= @sector.name %></td>
+            <td>
+              <!--業種の正しい表示-->
+              <!--業種を登録していないユーザーを表示させるとエラーが出る-->
+              <!--<= if @customer.sector_id.present? %>-->
+              <!--<= if @customer.sector_id == nil %>-->
+              <!--  課題-->
+              <!--< else %>-->
+              <!--  <=  Sector.find(@customer.sector_id).name %>-->
+              <!--< end %>-->
+            </td>
           </tr>
-
           <% @issues.each do |issue| %>
           <tr>
             <th>ニーズ</th>

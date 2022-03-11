@@ -6,7 +6,7 @@ class Admin::SectorsController < ApplicationController
 
   def create
     @sector = Sector.new(sector_params)
-    @sector.save
+    @sector.save!
     redirect_to request.referer
   end
 

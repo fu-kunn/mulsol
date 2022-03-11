@@ -34,7 +34,6 @@ Rails.application.routes.draw do
     resources :issues, only: [:new, :create, :edit, :update, :destroy]
     resources :chats, only: [:index, :show]
 
-    # ニーズ・課題の表示訂正のためshowアクションを
     resources :customers, only: [:index, :edit, :update, :show] do
       collection do
         get :mypage
@@ -43,7 +42,7 @@ Rails.application.routes.draw do
       end
     end
 
-    resources :users, only: [:index,:show,:edit,:update] do
+    resources :customers, only: [:index,:show,:edit,:update] do
       resource :relationships, only: [:create, :destroy]
         get 'followings' => 'relationships#followings', as: 'followings'
         get 'followers' => 'relationships#followers', as: 'followers'

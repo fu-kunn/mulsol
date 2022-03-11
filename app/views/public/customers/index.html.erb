@@ -32,7 +32,8 @@
   <tr>
     <th>業種</th>
     <!--業種の正しい表示-->
-    <td><%= customer.sectors.name %></td>
+    <!--業種を登録していないユーザーを表示させるとエラーが出る-->
+    <!--<td><= Sector.find(customer.sector_id).name %></td>-->
   </tr>
     <!--最新の一件のみを表示-->
     <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
@@ -52,3 +53,6 @@
     </th>
   </tr>
 </table>
+
+<!--フォロー機能-->
+<!--<= render 'public/customers/info', customer: current_customer %>-->
