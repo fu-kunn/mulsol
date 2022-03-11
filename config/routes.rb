@@ -32,7 +32,11 @@ Rails.application.routes.draw do
 
     resources :sectors, only: [:new, :create, :edit, :update]
     resources :issues, only: [:new, :create, :edit, :update, :destroy]
-    resources :chats, only: [:index, :show]
+    
+    # resources :chats, only: [:index, :show]
+    resources :chats, only: [:create]
+      get 'chat/:id', to: 'chats#show', as: 'chat'
+    
 
     resources :customers, only: [:index, :edit, :update, :show] do
       collection do
