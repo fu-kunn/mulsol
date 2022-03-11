@@ -32,6 +32,23 @@ class Customer < ApplicationRecord
     followings.include?(customer)
   end
 
+  # 検索方法分岐
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @customer = Customer.where("company_name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @customer = Customer.where("company_name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @customer = Customer.where("company_name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @customer = Customer.where("company_name LIKE?","%#{word}%")
+    else
+      @customer = Customer.all
+    end
+  end
+
+
+
   # def get_image
   #   unless image.attached?
   #     file_path = Rails.root.join('app/assets/images/no_image.jpg')

@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :admin do
-    get 'homes/top'
-  end
   # 顧客用
   # URL /customers/sign_in ...
   devise_for :customers, controllers: {
@@ -16,19 +13,22 @@ Rails.application.routes.draw do
     sessions: "admin/sessions"
   }
 
+  # 管理者
   namespace :admin do
     get '/' => 'homes#top'
     resources :sectors, only: [:index, :create, :edit, :update]
     resources :customers, only: [:show]
   end
 
+
+  # 顧客
   scope module: :public do
     root to: 'customers#top'
+    get 'search' => 'searches#search'
 
     resources :sectors, only: [:new, :create, :edit, :update, :show]
     resources :issues, only: [:new, :create, :edit, :update, :destroy]
 
-    # resources :chats, only: [:index, :show]
     resources :chats, only: [:create]
       get 'chat/:id', to: 'chats#show', as: 'chat'
 

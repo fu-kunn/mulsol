@@ -1,0 +1,52 @@
+<table class="table table-hover table-inverse">
+  <% if @range == "Customer" %>
+  <h3>Customers search for "<%= @word %>"</h3>
+    <tbody>
+        <tr>
+         <th>image</th>
+         <th>name</th>
+         <th colspan="3"></th>
+        </tr>
+      <% @customers.each do |customer| %>
+        <tr>
+          <td>
+            <% if customer.image.attached? %>
+              <%= image_tag customer.image, size: "50x50" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "50x50" %>
+            <% end %>
+          </td>
+          <td><%= customer.company_name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+    <% elsif @range == "Needs" %>
+    <h3>Needs search for "<%= @word %>"</h3>
+      <tbody>
+          <tr>
+           <th>name</th>
+           <th></th>
+          </tr>
+        <% @issues.each do |issue| %>
+          <tr>
+            <td><%= issue.customer.company_name %></td>
+            <td><%= issue.needs %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% else %>
+    <h3>Challenge search for "<%= @word %>"</h3>
+      <tbody>
+          <tr>
+           <th>name</th>
+           <th></th>
+          </tr>
+        <% @issues.each do |issue| %>
+          <tr>
+            <td><%= issue.customer.company_name %></td>
+            <td><%= issue.challenge %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    <% end %>
+</table>
