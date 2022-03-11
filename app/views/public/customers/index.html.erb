@@ -31,9 +31,13 @@
   </tr>
   <tr>
     <th>業種</th>
-    <!--業種の正しい表示-->
-    <!--業種を登録していないユーザーを表示させるとエラーが出る-->
-    <!--<td><= Sector.find(customer.sector_id).name %></td>-->
+    <td>
+    <% if customer.sector_id == nil %>
+    <!--未登録の場合は空白-->
+    <% else %>
+      <%=  Sector.find(customer.sector_id).name %>
+    <% end %>
+    </td>
   </tr>
     <!--最新の一件のみを表示-->
     <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
