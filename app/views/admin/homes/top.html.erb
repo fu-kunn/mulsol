@@ -1,6 +1,49 @@
-<h1>Admin::Homes#top</h1>
-<p>Find me in app/views/admin/homes/top.html.erb</p>
+<div class="container">
 
-<%= link_to "ログアウト", destroy_admin_session_url, method: :delete %>
+  <div class="row">
+    <div class="col-12 mb-5">
+      <h5 class="text-center col-4 mt-5" style="background-color: #EEEEEE">会員一覧</h5>
+      <%= link_to admin_sectors_path, class: "row justify-content-end mb-4" do %>
+        <i class="fa-solid fa-circle-plus fa-3x" style="color: silver"></i>
+      <% end %>
+   </div>
+ </div>
 
-<%= link_to "次へ", admin_sectors_path %>
+  <div class="row">
+    <div class="col-12 mb-5">
+      <table class="table">
+          <thead>
+              <tr class="bg-light">
+                  <th>会員ID</th>
+                  <th>企業名</th>
+                  <th>代表者名</th>
+                  <th>メールアドレス</th>
+                  <th>ステータス</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @customers.each do |customer| %>
+              <tr>
+                  <td><%= customer.id %></td>
+                  <td>
+                    <%= link_to admin_customer_path(customer), class: "text-dark", style: "text-decoration: underline;" do %>
+                      <%= customer.company_name %>
+                    <% end %>
+                  </td>
+                  <td><%= customer.first_name %><%= customer.last_name %></td>
+                  <td><%= customer.email %></td>
+                  <td>
+                    <%if customer.withdraw == false %>
+                      <span class="text-success font-weight-bold">有効</span>
+                    <% else %>
+                     <span class="text-secondary font-weight-bold">退会済</span>
+                    <% end %>
+                  </td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+      <div><%= paginate @customers %></div>
+    </div>
+  </div>
+</div>

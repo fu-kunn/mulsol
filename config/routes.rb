@@ -1,11 +1,5 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'relationships/followings'
-    get 'relationships/followers'
-  end
-  get 'relationships/followings'
-  get 'relationships/followers'
   namespace :admin do
     get 'homes/top'
   end
@@ -25,6 +19,7 @@ Rails.application.routes.draw do
   namespace :admin do
     get '/' => 'homes#top'
     resources :sectors, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:show]
   end
 
   scope module: :public do
@@ -32,11 +27,11 @@ Rails.application.routes.draw do
 
     resources :sectors, only: [:new, :create, :edit, :update]
     resources :issues, only: [:new, :create, :edit, :update, :destroy]
-    
+
     # resources :chats, only: [:index, :show]
     resources :chats, only: [:create]
       get 'chat/:id', to: 'chats#show', as: 'chat'
-    
+
 
     resources :customers, only: [:index, :edit, :update, :show] do
       collection do
