@@ -14,6 +14,11 @@ class Public::SectorsController < ApplicationController
     end
   end
 
+
+  def show
+    @sector = Sector.find(params[:id])
+  end
+
   # def edit
   #   @sector = Sector.find(params[:id])
   # end

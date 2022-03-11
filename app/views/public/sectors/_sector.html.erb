@@ -1,0 +1,8 @@
+<ul class="list-group">
+  <li class="list-group-item bg-light">業種検索</li>
+  <% sectors.each do |sector| %>
+    <%= link_to sector_path(sector.id) do %>
+    <li class="list-group-item bg-transparent bg-gradient text-dark", style="text-decoration: underline;"><%= sector.name %></li>
+    <% end %>
+  <% end %>
+</ul>

@@ -25,7 +25,7 @@ Rails.application.routes.draw do
   scope module: :public do
     root to: 'customers#top'
 
-    resources :sectors, only: [:new, :create, :edit, :update]
+    resources :sectors, only: [:new, :create, :edit, :update, :show]
     resources :issues, only: [:new, :create, :edit, :update, :destroy]
 
     # resources :chats, only: [:index, :show]
@@ -34,17 +34,14 @@ Rails.application.routes.draw do
 
 
     resources :customers, only: [:index, :edit, :update, :show] do
+      resource :relationships, only: [:create, :destroy]
+        get 'followings' => 'relationships#followings', as: 'followings'
+        get 'followers' => 'relationships#followers', as: 'followers'
       collection do
         get :mypage
         get :unsubscribe
         patch :withdraw
       end
-    end
-
-    resources :customers, only: [:index,:show,:edit,:update] do
-      resource :relationships, only: [:create, :destroy]
-        get 'followings' => 'relationships#followings', as: 'followings'
-        get 'followers' => 'relationships#followers', as: 'followers'
     end
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html

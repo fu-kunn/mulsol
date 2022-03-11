@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="row mt-5 align-items-end">
+    <h1 class="font-weight-bold">
+     <%=@sector.name %>一覧
+    </h1>
+    <h3 class="ml-3">
+    (全<%= @sector.customers.count %>件)
+    </h3>
+  </div>
+  <div class="row mt-5">
+    <% @sector.customers.each do |customer| %>
+      <div class="col-lg-3 col-md-6 mb-4">
+        <p>
+          <%= customer.company_name %>
+        </p>
+        <p>
+
+        </p>
+        <p>
+
+        </p>
+      </div>
+    <% end %>
+  </div>
+</div>

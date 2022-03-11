@@ -1,12 +1,8 @@
 <h1>企業一覧</h1>
 
 <ul class="list-group">
-  <li class="list-group-item bg-light">業種一覧</li>
-  <% @sectors.each do |sector| %>
-    <!--<= link_to sector_path(sector.id) do %>-->
-    <li class="list-group-item bg-transparent bg-gradient text-dark", style="text-decoration: underline;"><%= sector.name %></li>
-    <!--< end %>-->
-  <% end %>
+  <!--業種検索-->
+  <%= render "public/sectors/sector", sectors: @sectors %>
 </ul>
 
 <table>
