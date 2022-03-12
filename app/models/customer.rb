@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :issues, dependent: :destroy
-  belongs_to :secotr
+  belongs_to :sector, optional: true
   # has_many :sectors, dependent: :destroy
   has_many :customer_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy

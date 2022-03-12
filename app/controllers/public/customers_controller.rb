@@ -11,7 +11,6 @@ class Public::CustomersController < ApplicationController
   def show
     @customer = Customer.find(params[:id])
     @issues = @customer.issues
-    @sector = Sector.find(params[:id])
   end
 
   def edit
