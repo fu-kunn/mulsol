@@ -1,5 +1,19 @@
 <!--messageを部分更新。appendメソッドで要素を追加-->
-$('.message').append("<p style='text-align: left;'><%= @chat.message %></p>");
+$('.message').append("<div class='mycomment'><p><%= @chat.message %></p></div><div class='days'><p><%= @chat.created_at.strftime('%Y/%m/%d %H:%M') %></p></div>");
+<!--$('.message').append("<div class="days"><p><= @chat.created_at.strftime("%Y/%m/%d %H:%M") %></p></div>");-->
+
+<!--$(".message").click(function(){-->
+<!--	$('mine').append('<div class='mycomment'><p><= @chat.message %></p></div>', '<div class="days"><p><= @chat.created_at.strftime("%Y/%m/%d %H:%M") %></p></div>');-->
+<!--});-->
 
 <!--チャット投稿後、フォームの値に前回の投稿内容が残らないようにする-->
-$('input[type=text]').val("")
+<!-- ID=# CLASS=. TAG=originlname-->
+$('#chat_message').val("")
+
+window.onload = function() {
+  if (document.getElementById("area")) {
+    var scrollPosition = document.getElementById("area").scrollTop;
+    var scrollHeight = document.getElementById("area").scrollHeight;
+    document.getElementById("area").scrollTop = scrollHeight;
+  }
+}

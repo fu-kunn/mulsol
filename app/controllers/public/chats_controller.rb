@@ -6,9 +6,9 @@ class Public::ChatsController < ApplicationController
 
     if customer_rooms.nil?
       @room = Room.new
-      @room.save
-      CustomerRoom.create(customer_id: @customer.id, room_id: @room.id)
-      CustomerRoom.create(customer_id: current_customer.id, room_id: @room.id)
+      @room.save!
+      CustomerRoom.create!(customer_id: @customer.id, room_id: @room.id)
+      CustomerRoom.create!(customer_id: current_customer.id, room_id: @room.id)
     else
       @room = customer_rooms.room
     end
@@ -19,7 +19,7 @@ class Public::ChatsController < ApplicationController
 
   def create
     @chat = current_customer.chats.new(chat_params)
-    @chat.save
+    @chat.save!
   end
 
   private
