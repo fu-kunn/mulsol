@@ -94,10 +94,12 @@
 <% if @customer.id == current_customer.id %>
   <%= link_to "編集", edit_customer_path(@customer) %>
 <% end %>
-<% if current_customer != @customer %>
-  <%= link_to 'Begin Chat', chat_path(@customer.id) %>
-<% else %>
-  <%= link_to "チャット", chats_path(@customer), class: "btn btn-success" %>
+
+<!--フォローした人のみチャット機能が使える-->
+<% unless current_customer == @customer %>
+  <% if current_customer.following?(@customer) %>
+    <%= link_to 'Begin Chat', chat_path(@customer.id) %>
+  <% end %>
 <% end %>
 <!--フォロー機能の作成-->
 <%= render 'public/customers/info', customer: @customer %>
