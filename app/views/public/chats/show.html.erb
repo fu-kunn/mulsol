@@ -16,14 +16,12 @@
       <div class="message">
         <% @chats.each do |chat| %>
           <% if chat.customer_id == current_customer.id %>
-          <!--<div class="mine">-->
             <div class="mycomment">
               <p><%= chat.message %></p>
             </div>
             <div class="days">
               <p><%= chat.created_at.strftime("%Y/%m/%d %H:%M") %></p>
             </div>
-          <!--</div>-->
           <% else %>
             <div class="fukidasi">
               <div class="faceicon">
