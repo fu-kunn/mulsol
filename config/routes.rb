@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     resources :sectors, only: [:index, :create, :edit, :update]
     resources :customers, only: [:show]
+    resources :contacts, only: [:index]
   end
 
 
@@ -28,10 +29,12 @@ Rails.application.routes.draw do
 
     resources :sectors, only: [:new, :create, :edit, :update, :show]
     resources :issues, only: [:new, :create, :edit, :update, :destroy]
-
     resources :chats, only: [:create]
       get 'chat/:id', to: 'chats#show', as: 'chat'
-
+    resources :contacts, only: [:new, :create]
+      post 'contacts/confirm', to: 'contacts#confirm', as: 'confirm'
+      post 'contacts/back', to: 'contacts#back', as: 'back'
+      get 'done', to: 'contacts#done', as: 'done'
 
     resources :customers, only: [:index, :edit, :update, :show] do
       resource :relationships, only: [:create, :destroy]
