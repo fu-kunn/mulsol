@@ -96,6 +96,6 @@
 <% end %>
 <% if current_customer != @customer %>
   <%= link_to 'Begin Chat', chat_path(@customer.id) %>
-<% end %>
+<% end %>                      
 <!--フォロー機能の作成-->
 <%= render 'public/customers/info', customer: @customer %>

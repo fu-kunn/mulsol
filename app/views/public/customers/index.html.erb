@@ -8,7 +8,7 @@
 <table>
 <% @customers.each do |customer| %>
   <!--企業に紐づく画像-->
-  <!--<tr>-->
+  <tr>
     <th>
       <% if customer.image.attached? %>
         <%= image_tag customer.image, size: "200x200" %>
