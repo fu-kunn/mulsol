@@ -6,7 +6,7 @@
 		<h5>退会する場合は、「退会する」をクリックしてください。</h5>
 	</div>
 	<div class="text-center">
-		<%= link_to '退会しない', mypage_customers_path, class: "btn btn-primary" %>
+		<%= link_to '退会しない', customer_path(@customer), class: "btn btn-primary" %>
 		<%= link_to "退会する", withdraw_customers_path, method: :patch, class: "btn btn-danger" %>
 	</div>
 </div>

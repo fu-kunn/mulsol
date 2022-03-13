@@ -1,0 +1,34 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 mb-5">
+      <h5 class="text-center col-4 mt-5" style="background-color: #EEEEEE">問い合わせ一覧</h5>
+   </div>
+ </div>
+
+  <div class="row">
+    <div class="col-12 mb-5">
+      <table class="table">
+          <thead>
+              <tr class="bg-light">
+                  <th>企業名</th>
+                  <th>メールアドレス</th>
+                  <th>用件</th>
+              </tr>
+          </thead>
+          <tbody>
+            <% @contacts.each do |contact| %>
+              <tr>
+                  <td><%= contact.company_name %></td>
+                  <td>
+                      <%= contact.email %>
+                  </td>
+                  <td><%= contact.subject %></td>
+              </tr>
+            <% end %>
+          </tbody>
+      </table>
+      <div><%= paginate @contacts %></div>
+    </div>
+  </div>
+</div>

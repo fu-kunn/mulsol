@@ -1,0 +1,36 @@
+<table>
+  <tbody>
+    <tr>
+      <td class="text-center" style="width: 30%">企業名</td>
+      <td><%= @contact.company_name %></td>
+    </tr>
+    <tr>
+      <td class="text-center">返信用のメールアドレス</td>
+      <td><%= @contact.email %></td>
+    </tr>
+    <tr>
+      <td class="text-center">用件</td>
+      <td><%= @contact.subject %></td>
+    </tr>
+    <tr>
+      <td class="text-center">メッセージ</td>
+      <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+    </tr>
+  </tbody>
+</table>
+
+<%= form_with(model: @contact, url:contacts_path, method: :post, local:true) do |f| %>
+  <%= f.hidden_field :company_name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :subject %>
+  <%= f.hidden_field :message %>
+  <%= f.submit '送信' %>
+<% end %>
+
+<%= form_with(model: @contact, url:back_path, method: :post, local:true) do |f| %>
+  <%= f.hidden_field :company_name %>
+  <%= f.hidden_field :email %>
+  <%= f.hidden_field :subject %>
+  <%= f.hidden_field :message %>
+  <%= f.submit '入力画面に戻る' %>
+<% end %>
