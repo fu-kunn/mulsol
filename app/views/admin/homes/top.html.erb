@@ -1,9 +1,9 @@
 <div class="container">
 
   <div class="row">
-    <div class="col-12 mb-5">
-      <h5 class="text-center col-4 mt-5" style="background-color: #EEEEEE">会員一覧</h5>
-      <%= link_to admin_sectors_path, class: "row justify-content-end mb-4" do %>
+    <div class="col-12 mb-5 text-right">
+      <h5 class="text-center col-3 mt-5 font-weight-bold" style="background-color: #EEEEEE">会員一覧</h5>
+      <%= link_to admin_sectors_path, class: "mb-2" do %>
         <i class="fas fa-plus-square fa-3x" style="color: silver"></i>
       <% end %>
    </div>
@@ -11,28 +11,26 @@
 
   <div class="row">
     <div class="col-12 mb-5">
-      <table class="table">
+      <table class="table table-hover table-inverse mousepointer-hand">
           <thead>
               <tr class="bg-light">
                   <th>会員ID</th>
                   <th>企業名</th>
                   <th>代表者名</th>
                   <th>メールアドレス</th>
-                  <th>ステータス</th>
+                  <th class="text-center">ステータス</th>
               </tr>
           </thead>
           <tbody>
             <% @customers.each do |customer| %>
-              <tr>
+              <tr class="pointer" data-href="/admin/customers/<%= customer.id %>">
                   <td><%= customer.id %></td>
                   <td>
-                    <%= link_to admin_customer_path(customer), class: "text-dark", style: "text-decoration: underline;" do %>
                       <%= customer.company_name %>
-                    <% end %>
                   </td>
                   <td><%= customer.first_name %><%= customer.last_name %></td>
                   <td><%= customer.email %></td>
-                  <td>
+                  <td class="text-center">
                     <%if customer.withdraw == false %>
                       <span class="text-success font-weight-bold">有効</span>
                     <% else %>
@@ -47,3 +45,18 @@
     </div>
   </div>
 </div>
+
+
+<script>
+jQuery( function($) {
+    $('tbody tr[data-href]').addClass('clickable').click( function() {
+        window.location = $(this).attr('data-href');
+    }).find('a').hover( function() {
+        $(this).parents('tr').unbind('click');
+    }, function() {
+        $(this).parents('tr').click( function() {
+            window.location = $(this).attr('data-href');
+        });
+    });
+});
+</script>
