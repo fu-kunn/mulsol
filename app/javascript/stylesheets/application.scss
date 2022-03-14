@@ -2,6 +2,8 @@
 @import '~bootstrap/scss/bootstrap';
 // fontawesomeの導入
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
+@import './header.scss';
+@import './footer.scss';
 
 /************************************
 ** トークルーム一覧
@@ -109,7 +111,9 @@
 // }
 
 
-
+// 管理者　問い合わせ詳細ページ
 .card-message {
  margin-top: 100px;
 }
+
+
