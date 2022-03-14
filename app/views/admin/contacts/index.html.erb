@@ -8,7 +8,7 @@
 
   <div class="row">
     <div class="col-12 mb-5">
-      <table class="table">
+      <table class="table table-hover table-inverse">
           <thead>
               <tr class="bg-light">
                   <th>企業名</th>
@@ -17,9 +17,15 @@
               </tr>
           </thead>
           <tbody>
+
             <% @contacts.each do |contact| %>
+            <!--行にリンク-->
+            <%= link_to "次へ", admin_contact_path(contact.id) %>
+              <!--<tr data-href="/admin/customers/:id">-->
               <tr>
-                  <td><%= contact.company_name %></td>
+                <td>
+                  <%= contact.company_name %>
+                </td>
                   <td>
                       <%= contact.email %>
                   </td>
@@ -32,3 +38,4 @@
     </div>
   </div>
 </div>
+

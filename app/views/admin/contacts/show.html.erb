@@ -1,0 +1,27 @@
+<div class="container">
+
+  <div class="row">
+    <div class="col-12 mb-5">
+      <h5 class="text-center col-4 mt-5 offset-2" style="background-color: #EEEEEE">問い合わせ詳細</h5>
+   </div>
+ </div>
+
+  <div class="row">
+    <div class="col-12 mb-5">
+
+        <div class="card offset-2" style="width: 50rem; height: 35rem; ">
+          <div class="card-body">
+            <div class="card-name">企業名:<%= @contact.company_name %></div>
+            <div class="card-email">返信用メールアドレス:<%= @contact.email %></div>
+
+            <div class="card-subject mt-3">【用件】</div>
+            <div><%= @contact.subject %></div>
+            
+            <div class="card-message">【内容】</div>
+            <div><%= @contact.message %></div>
+          </div>
+        </div>
+
+    </div>
+  </div>
+</div>
