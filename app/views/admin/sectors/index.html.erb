@@ -7,17 +7,14 @@
   </div>
 
   <div class="row">
-    <div class="col-5 mb-5">
+    <div class="col-5">
       <%= form_with model: @sector, url: admin_sectors_path, local: true do |f| %>
         <%= f.label :業種, class: "font-weight-bold" %>
         <%= f.text_field :name, placeholder: "業種名", class: "offset-1" %>
         <%= f.submit "新規登録", class: "btn btn-success offset-1" %>
       <% end %>
     </div>
-  </div>
-
-  <div class="row">
-    <div class="col-5 mb-5">
+    <div class="col-5 ml-5">
       <table class="table ">
         <thead>
           <tr class="bg-light">
@@ -36,4 +33,4 @@
       </table>
     </div>
   </div>
-</div>
+  </div>
