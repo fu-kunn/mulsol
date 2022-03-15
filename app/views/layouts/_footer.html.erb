@@ -13,32 +13,50 @@
           <!--</li>-->
           <!--トップページは検索窓を非表示-->
 
-          <li class="nav-item">
+          <li class="nav-item text-center" style="font-size: 11px" >
+            <i class="fas fa-building fa-3x" style="color: #f8f9fa"></i>
             <%= link_to '企業一覧', customers_path, class: 'nav-link text-light' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item text-center" style="font-size: 11px">
+            <i class="fas fa-user fa-3x" style="color: #f8f9fa"></i>
             <%= link_to 'マイページ', customer_path(current_customer), class: 'nav-link text-light' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item text-center" style="font-size: 11px">
+            <i class="fas fa-sign-out-alt fa-3x" style="color: #f8f9fa"></i>
             <%= link_to 'ログアウト', destroy_customer_session_path, method: :delete, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item text-center" style="font-size: 11px">
+            <i class="fas fa-bell fa-3x" style="color: #f8f9fa"></i><br>
+            <!--お知らせのパスを指定-->
+            <%= link_to 'お知らせ',customer_path(current_customer), class: 'nav-link text-light' %>
           </li>
 <%# 管理者ログイン後のヘッダー　%>
         <% elsif admin_signed_in? %>
-          <li class="nav-item">
-            <%= link_to '問い合わせ一覧', admin_contacts_path, class: 'nav-link text-light' %>
+          <li class="nav-item text-center" style="font-size: 11px" >
+            <i class="far fa-envelope fa-3x" style="color: #f8f9fa"></i>
+            <%= link_to '問い合わせ', admin_contacts_path, class: 'nav-link text-light' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item text-center" style="font-size: 11px" >
+            <i class="fas fa-building fa-3x" style="color: #f8f9fa"></i>
             <%= link_to '企業一覧', admin_path, class: 'nav-link text-light' %>
           </li>
-          <li class="nav-item">
+          <li class="nav-item text-center" style="font-size: 11px" >
+            <i class="fas fa-plus-square fa-3x" style="color: #f8f9fa"></i>
+            <%= link_to '業種追加', admin_sectors_path, class: 'nav-link text-light' %>
+          </li>
+          <li class="nav-item text-center" style="font-size: 11px">
+            <i class="fas fa-sign-out-alt fa-3x" style="color: #f8f9fa"></i>
             <%= link_to 'ログアウト', destroy_admin_session_path, method: :delete, class: 'nav-link text-light' %>
           </li>
 <%# ログイン前のヘッダー(ユーザー、管理者共通)　%>
         <% else %>
-          <li>
+          <li class="nav-item text-center" style="font-size: 11px">
+            <i class="fas fa-user-plus fa-3x" style="color: #f8f9fa"></i><br>
             <%= link_to '新規登録', new_customer_registration_path, class: 'nav-link text-light' %>
           </li>
-          <li>
+
+          <li class="nav-item text-center" style="font-size: 11px">
+            <i class="fas fa-sign-in-alt fa-3x" style="color: #f8f9fa"></i><br>
             <%= link_to "ログイン",new_customer_session_path ,class: 'nav-link text-light' %>
           </li>
         <% end %>
