@@ -1,7 +1,7 @@
 <div class="container">
   <div class="row mt-4">
     <div class="col-3 mt-3 mb-3">
-      <h5 class="text-center bg-light font-weight-bold">企業詳細ページ</h5>
+      <h5 class="text-center font-weight-bold">企業詳細ページ</h5>
     </div>
   </div>
 
@@ -17,33 +17,32 @@
               <% end %>
             </th>
           </tr>
+        </table>
+        <table class="offset-2 bg-light">
+
           <tr>
-            <th>会員ID</th>
-            <td>No.<%= @customer.id %></td>
+            <th class="pl-2" style="background-color: silver">企業名</th>
+            <td class="pl-2"><%= @customer.company_name %></td>
           </tr>
           <tr>
-            <th>企業名</th>
-            <td><%= @customer.company_name %></td>
-          </tr>
-            <tr>
-            <th>企業名フリガナ</th>
-            <td><%= @customer.company_name_kana %></td>
+            <th class="pl-2 pr-2" style="background-color: silver">企業名フリガナ</th>
+            <td class="pl-2"><%= @customer.company_name_kana %></td>
           </tr>
           <tr>
-            <th>郵便番号</th>
-            <td><%= @customer.post_code %></td>
+            <th class="pl-2" style="background-color: silver">郵便番号</th>
+            <td class="pl-2"><%= @customer.post_code %></td>
           </tr>
           <tr>
-            <th>住所</th>
-            <td><%= @customer.address %></td>
+            <th class="pl-2" style="background-color: silver">住所</th>
+            <td class="pl-2 pr-2"><%= @customer.address %></td>
           </tr>
           <tr>
-            <th>代表者</th>
-            <td><%= @customer.first_name %><%= @customer.last_name %></td>
+            <th class="pl-2" style="background-color: silver">代表者</th>
+            <td class="pl-2"><%= @customer.first_name %><%= @customer.last_name %></td>
           </tr>
           <tr>
-            <th>代表者連絡先</th>
-            <td><%= @customer.tel %></td>
+            <th class="pl-2 pr-2" style="background-color: silver">代表者連絡先</th>
+            <td class="pl-2"><%= @customer.tel %></td>
         </tr>
         </table>
       </div>
