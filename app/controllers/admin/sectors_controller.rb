@@ -20,6 +20,12 @@ class Admin::SectorsController < ApplicationController
     redirect_to admin_sectors_path
   end
 
+  def destroy
+    @sector = Sector.find(params[:id])
+    @sector.destroy
+    redirect_to admin_sectors_path
+  end
+
 
   private
   def sector_params

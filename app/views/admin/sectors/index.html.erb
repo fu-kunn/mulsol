@@ -1,36 +1,42 @@
-   <div class="container">
-
-  <div class="row">
-    <div class="col-3 mb-5">
-      <h5 class="text-center bg-light mt-5 font-weight-bold">業種一覧・追加</h5>
+  <div class="container">
+  
+    <div class="row">
+      <div class="col-3 mb-5">
+        <h5 class="text-center mt-5 font-weight-bold">業種追加・一覧</h5>
+      </div>
     </div>
-  </div>
 
-  <div class="row">
-    <div class="col-5">
-      <%= form_with model: @sector, url: admin_sectors_path, local: true do |f| %>
-        <%= f.label :業種, class: "font-weight-bold" %>
-        <%= f.text_field :name, placeholder: "業種名", class: "offset-1" %>
-        <%= f.submit "新規登録", class: "btn btn-success offset-1" %>
-      <% end %>
-    </div>
-    <div class="col-5 ml-5">
-      <table class="table ">
-        <thead>
-          <tr class="bg-light">
-            <th>業種名</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <% @sectors.each do |sector| %>
-            <tr>
-              <td><%= sector.name %></td>
-              <td><%= link_to "編集する", edit_admin_sector_path(sector), class: "btn btn-success offset-6" %></td>
+    <div class="row">
+      <div class="col-5">
+        <%= form_with model: @sector, url: admin_sectors_path, local: true do |f| %>
+          <%= f.label :業種, class: "font-weight-bold" %>
+          <%= f.text_field :name, placeholder: "業種名", class: "offset-1" %>
+          <%= f.submit "新規登録", class: "btn btn-success offset-1 rounded-pill" %>
+        <% end %>
+      </div>
+      <div class="col-5 ml-5">
+        <table class="table ">
+          <thead>
+            <tr class="bg-light">
+              <th>業種名</th>
+              <th></th>
+              <th></th>
             </tr>
-          <% end %>
-        </tbody>
-      </table>
+          </thead>
+          <tbody>
+            <% @sectors.each do |sector| %>
+              <tr>
+                <td><%= sector.name %></td>
+                <td><%= link_to "編集する", edit_admin_sector_path(sector), class: "btn btn-success offset-6 rounded-pill" %></td>
+                <td class="text-right">
+                  <%= link_to admin_sector_path(sector), method: :delete, data: {confirm: "削除しますか？"} do %>
+                  <i class="far fa-trash-alt fa-2x" style="color: #343a40"></i>
+                  <% end %>
+                </td>
+              </tr>
+            <% end %>
+          </tbody>
+        </table>
+      </div>
     </div>
-  </div>
   </div>
