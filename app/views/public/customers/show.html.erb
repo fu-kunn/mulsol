@@ -121,46 +121,50 @@
       </table>
     </div>
   </div>
+</div>
 
   <!--ニーズ・課題-->
-  <div class="row">
-    <div class="col-12">
-      <h5 class="mt-5 font-weight-bold"><%= @customer.company_name %>のニーズ・課題</h5>
+  <div class="col-12 offset-2">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="mt-5 font-weight-bold"><%= @customer.company_name %>のニーズ・課題</h5>
 
-      <div class="card" style="width: 50rem; height: 30rem; ">
-        <div class="card-body">
-          <% @issues.each do |issue| %>
-          <div class="card-subject mt-3">【ニーズ】</div>
-          <div>
-          <%= issue.needs %>
-          </div>
+        <% @issues.each do |issue| %>
+          <div class="card mb-5 mt-5" style="width: 50rem; height: 30rem; ">
+            <div class="card-body">
+              <div class="text-right mt-1" style="font-size: 11px;">
+                <% if @customer.id == current_customer.id %>
+                <%= link_to edit_issue_path(issue.id) do %>
+                  <i class="fas fa-edit fa-2x" style="color: #343a40;"></i><br>
+                <% end %>
+                <% end %>
+              </div>
+              <div class="card-subject">
+                【ニーズ】
+              </div>
+              <div style="height: 9rem;">
+                <%= issue.needs %>
+              </div>
+              <div>
+                【課題】
+              </div>
+              <div>
+                <%= issue.challenge %>
+              </div>
 
-          <div class="align-items-center" style="height:300px;">
-          <div style="align-items: center;">
-          <% if @customer.id == current_customer.id %>
-          <%= link_to edit_issue_path(issue.id)  do %>
-          【課題】
-          <% end %>
-          <% else %>
-          【課題】
-          <% end %>
+            </div>
           </div>
-          <div><%= issue.challenge %></div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
   </div>
-</div>
 
   <!--フッターを固定  -->
   <div class="container">
 
-  <div class="row">
-    <div class="col-12">
-      <p class="footer-absolute text-center text-bottom">©︎2022 fu-kun<p>
+    <div class="row">
+      <div class="col-12">
+        <p class="footer-absolute text-center text-bottom">©︎2022 fu-kun<p>
+      </div>
     </div>
   </div>
-  </div>
-
-

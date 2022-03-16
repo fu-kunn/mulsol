@@ -11,7 +11,7 @@ class Public::IssuesController < ApplicationController
     if @issue.save
       redirect_to customer_path(@customer), notice: "You have created book successfully."
     else
-      redirect_to root_path
+      render :new
     end
   end
 

@@ -15,6 +15,14 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
+    # エラー分の日本語化
+    # models:
+    #   issue: "問題"
+    #   attributes:
+    #     issue:
+    #       needs: "ニーズ"
+    #       challenge: "課題"
+
   date:
     abbr_day_names:
     - 日
@@ -213,3 +221,4 @@ ja:
       long: "%Y/%m/%d %H:%M"
       short: "%m/%d %H:%M"
     pm: 午後
+
