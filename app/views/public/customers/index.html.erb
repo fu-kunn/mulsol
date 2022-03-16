@@ -1,60 +1,64 @@
-<h1>企業一覧</h1>
+<!--業種検索-->
+<%= render "public/sectors/sector", sectors: @sectors %>
 
-<ul class="list-group">
-  <!--業種検索-->
-  <%= render "public/sectors/sector", sectors: @sectors %>
-</ul>
+<div class="row">
+  <div class="col-12 mb-5 text-center">
+    <h5 class="text-center col-12 mt-5 font-weight-bold">企業一覧</h5>
+ </div>
+</div>
 
-<table>
-<% @customers.each do |customer| %>
-  <!--企業に紐づく画像-->
-  <tr>
-    <th>
-      <% if customer.image.attached? %>
-        <%= image_tag customer.image, size: "200x200" %>
-      <% else %>
-        <%= image_tag 'no_image', size: "200x200" %>
-      <% end %>
-    </th>
-  </tr>
-  <tr>
-    <th>企業名 :</th>
-    <td>
+
+<div class="col-sm-12">
+  <div class="row">
+    <% @customers.each do |customer| %>
+      <div class="card ml-5 mb-5" style="background-color: silver; width: 26rem; height: 36rem;">
+        <div class="mb-3 mt-3" style="text-align: center">
+        <% if customer.image.attached? %>
+          <%= image_tag customer.image, size: "400x200" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x200" %>
+        <% end %>
+        </div>
+
+      <p class="ml-2">
+      企業名 :
       <%= link_to customer_path(customer.id)  do %>
         <%= customer.company_name %>
       <% end %>
-    </td>
-  </tr>
-  <tr>
-    <th>業種</th>
-    <td>
-    <% if customer.sector_id == nil %>
-    <!--未登録の場合は空白-->
-    <% else %>
-      <%=  Sector.find(customer.sector_id).name %>
+      </p>
+      <p class="ml-2">
+      業種 :
+      <% if customer.sector_id == nil %>
+        <!--未登録の場合は空白-->
+      <% else %>
+        <%=  Sector.find(customer.sector_id).name %>
+      <% end %>
+      </p>
+      <p>
+      【ニーズ】
+      </p>
+      <p class="needs ml-2">
+      <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
+        <%= issue.needs %>
+      <% end %>
+      </p>
+      <p>
+        【課題】
+      </p>
+      <p class="challenge ml-2">
+      <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
+        <%= issue.challenge %>
+      <% end %>
+      </p>
+      </div>
     <% end %>
-    </td>
-  </tr>
-    <!--最新の一件のみを表示-->
-    <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
-  <tr>
-    <th>ニーズ</th>
-    <td><%= issue.needs %></td>
-  </tr>
-  <tr>
-    <th>課題</th>
-    <td><%= issue.challenge %></td>
-  </tr>
-  <% end %>
-<% end %>
-  <tr>
-    <th>
-      <%= paginate @customers %>
-    </th>
-  </tr>
-</table>
+  </div>
+</div>
 
 <!--フォロー機能-->
 <!--<= render 'public/customers/info', customer: current_customer %>-->
 
-<%= link_to "問い合わせ",new_contact_path %>
+  <div class="footer-absolute offset-5">
+    <%= paginate @customers %>
+  </div>
+

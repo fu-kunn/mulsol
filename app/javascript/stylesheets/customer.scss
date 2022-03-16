@@ -1,0 +1,14 @@
+.needs {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
+  overflow: hidden;
+  height:3em; /*行の高さを固定 */
+}
+
+.challenge {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 4; /* 制限したい行数が3の場合 */
+  overflow: hidden;
+}

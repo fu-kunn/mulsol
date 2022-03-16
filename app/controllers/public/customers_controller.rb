@@ -4,7 +4,7 @@ class Public::CustomersController < ApplicationController
 
   def index
     @sectors = Sector.all
-    @customers = Customer.order(created_at: :desc).limit(2).page(params[:page]).per(2)
+    @customers = Customer.order(created_at: :desc).limit(4).page(params[:page]).per(4)
     @customer = current_customer
   end
 

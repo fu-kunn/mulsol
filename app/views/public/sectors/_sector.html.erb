@@ -1,8 +1,12 @@
-<ul class="list-group">
-  <li class="list-group-item bg-light">業種検索</li>
-  <% sectors.each do |sector| %>
-    <%= link_to sector_path(sector.id) do %>
-    <li class="list-group-item bg-transparent bg-gradient text-dark", style="text-decoration: underline;"><%= sector.name %></li>
+<li class="nav-item dropdown ml-5" style="list-style-type:none;">
+  <a class="nav-link dropdown-toggle text-dark" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+    業種検索
+  </a>
+  <div class="dropdown-menu" style="background-color:#696969; border-color:rgb(133, 133, 133);" aria-labelledby="navbarDropdown">
+    <% sectors.each do |sector| %>
+      <%= link_to sector_path(sector.id) do %>
+        <div class="dropdown-item text-center pl-3" style="color: #f8f9fa" href="#"><%= sector.name %></div>
+      <% end %>
     <% end %>
-  <% end %>
-</ul>
+  </div>
+</li>
