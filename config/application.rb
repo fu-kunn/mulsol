@@ -21,6 +21,7 @@ module Mulsol
     # ページネーションの日本語化
     # device日本語化
     config.i18n.default_locale = :ja
+    I18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}')]
     config.time_zone = 'Tokyo'
   end
 end

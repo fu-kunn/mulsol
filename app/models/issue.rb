@@ -1,6 +1,12 @@
 class Issue < ApplicationRecord
   belongs_to :customer
 
+  validates :needs, length: { maximum: 235 }
+  validates :challenge, length: { maximum: 400 }
+  validates :needs, presence: true
+  validates :challenge, presence: true
+
+
   # 検索方法分岐 ニーズ
   def self.looks(search, word)
     if search == "perfect_match"

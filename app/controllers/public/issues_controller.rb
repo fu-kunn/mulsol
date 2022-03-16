@@ -11,7 +11,7 @@ class Public::IssuesController < ApplicationController
     if @issue.save
       redirect_to customer_path(@customer), notice: "You have created book successfully."
     else
-      redirect_to root_path
+      render :new
     end
   end
 
@@ -23,8 +23,9 @@ class Public::IssuesController < ApplicationController
 
   def update
     @issue = Issue.find(params[:id])
+    @customer = current_customer
     if @issue.update(issue_params)
-      redirect_to customer_path
+      redirect_to customer_path(@customer)
     else
       render :edit
     end

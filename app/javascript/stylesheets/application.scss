@@ -2,9 +2,9 @@
 @import '~bootstrap/scss/bootstrap';
 // fontawesomeの導入
 @import '~@fortawesome/fontawesome-free/scss/fontawesome';
-@import './header.scss';
-@import './footer.scss';
 @import './admin.scss';
+@import './customer.scss';
+@import './footer.scss';
 
 /************************************
 ** トークルーム一覧
@@ -117,4 +117,14 @@
  margin-top: 100px;
 }
 
+// 業種検索
+.dropdown-item:hover {
+    background-color: #6495ed;
+    border-radius: 5px;
+}
 
+// ページネーション自体のデザイン
+.pagination>li>a {
+  color: #f8f9fa;   /*文字の色を変える*/
+  background-color: #343a40;
+}

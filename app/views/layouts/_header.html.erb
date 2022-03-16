@@ -8,17 +8,20 @@
     </th>
     <td class="text-right pr-5">
       <% if customer_signed_in? %>
-      <% unless current_page?(root_path) %>
-        <%= render 'public/searches/form' %>
+        <% unless current_page?(root_path) %>
+          <%= render 'public/searches/form' %>
+        <% end %>
       <% end %>
-      <% end %>
-    </tr>
     </td>
+    <td>
+      <div class="text-center mt-3" style="font-size: 11px;">
+        <%= link_to do %>
+          <i class="fas fa-bell fa-2x" style="color: #343a40;"></i><br>
+          <div class="nav-link text-dark">お知らせ</div>
+        <% end %>
+      </div>
+    </td>
+    </tr>
   </table>
   </container>
 </header>
-
-
-          <!--<li class="nav-item">-->
-          <!--  <= link_to '問い合わせ', contacts_new_path, class: 'nav-link text-light' %>-->
-          <!--</li>-->

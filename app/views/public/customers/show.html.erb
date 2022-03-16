@@ -1,106 +1,170 @@
 <div class="container">
   <div class="row mt-4">
-    <div class="col-3 mt-3 mb-3">
-      <h5 class="text-center bg-light">企業詳細ページ</h5>
+    <div class="col-12 mt-3 mb-3">
+      <h5 class="text-center font-weight-bold">企業詳細ページ</h5>
+    </div>
+    <div class="col-12 text-right">
+      <!--ログインしているユーザーのみ編集を表示する-->
+      <% if @customer.id == current_customer.id %>
+        <%= link_to  edit_customer_path(@customer) do %>
+          <i class="fas fa-cog fa-2x" style="color: silver"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
 
+  <!--画像、フォロー、チャット-->
   <div class="row mt-4">
-    <div class="col-lg-6">
-      <div class="row">
-        <table>
-          <tr>
-            <th>
-              <% if @customer.image.attached? %>
-                <%= image_tag @customer.image, size: "200x200" %>
-              <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
-              <% end %>
-            </th>
-          </tr>
-          <tr>
-            <th>
-              <%= @customer.company_name %>のニーズ・課題
-            </th>
-          </tr>
-          <tr>
-            <th>業種   :</th>
-            <td>
-              <% if @customer.sector_id == nil %>
-                課題
-              <% else %>
-                <%=  Sector.find(@customer.sector_id).name %>
-              <% end %>
-            </td>
-          </tr>
-          <% @issues.each do |issue| %>
-          <tr>
-            <th>ニーズ</th>
-            <td><%= issue.needs %></td>
-          </tr>
-          <tr>
-            <th>
-            <% if @customer.id == current_customer.id %>
-              <%= link_to edit_issue_path(issue.id)  do %>
-                課題
-              <% end %>
-            <% else %>
-              課題
-            <% end %>
-            </th>
-            <td><%= issue.challenge %></td>
-          </tr>
-          <% end %>
-        </table>
-      </div>
-    </div>
-
     <div class="col-lg-4">
-      <div class="row">
-        <table>
-          <tr>
-            <th>企業情報</th>
-          </tr>
-          <tr>
-            <th>企業名</th>
-            <td><%= @customer.company_name %></td>
-          </tr>
-            <tr>
-            <th>企業名フリガナ</th>
-            <td><%= @customer.company_name_kana %></td>
-          </tr>
-          <tr>
-            <th>郵便番号</th>
-            <td><%= @customer.post_code %></td>
-          </tr>
-          <tr>
-            <th>住所</th>
-            <td><%= @customer.address %></td>
-          </tr>
-          <tr>
-            <th>代表者</th>
-            <td><%= @customer.first_name %><%= @customer.last_name %></td>
-          </tr>
-          <tr>
-            <th>代表者連絡先</th>
-            <td><%= @customer.tel %></td>
+    <div class="row">
+      <table>
+        <tr>
+          <th>
+            <% if @customer.image.attached? %>
+              <%= image_tag @customer.image, size: "200x200" %>
+            <% else %>
+              <%= image_tag 'no_image', size: "200x200" %>
+            <% end %>
+          </th>
         </tr>
-        </table>
-      </div>
+        <tr>
+          <th class="pt-5">
+            <!--フォロー機能の作成-->
+            <%= render 'public/customers/info', customer: @customer %>
+          </th>
+          <td class="text-center pt-2">
+            <!--フォローした人のみチャット機能が使える-->
+            <% unless current_customer == @customer %>
+              <% if current_customer.following?(@customer) %>
+                <%= link_to chat_path(@customer.id) do %>
+                  <i class="fas fa-comment-dots fa-3x" style="color: #28a745;"></i>
+                  <div style="font-size: 15px; color: #343a40; text-decoration: none;">Let'sチャット</div>
+                <% end %>
+              <% end %>
+            <% end %>
+          </td>
+        </tr>
+      </table>
     </div>
+  </div>
+
+    <!--企業情報-->
+  <div class="col-lg-8">
+    <div class="row">
+      <table class="col-12 bg-light">
+
+        <tr class="col-12" style="background-color: #343a40; border: 1px solid #343a40;">
+          <th class="col-3">
+          </th>
+          <td class="pl-5" style="color: #f8f9fa; height: 3rem;">
+            <%= @customer.company_name %>の企業情報
+          </td>
+        </tr>
+
+        <tr style= "border: 1px solid black;">
+          <th class="pl-2 pr-2 pt-1" style="background-color: silver;">
+            企業名フリガナ
+          </th>
+          <td class="pl-2 pt-1">
+            <%= @customer.company_name_kana %>
+          </td>
+        </tr>
+
+        <tr style= "border: 1px solid black;">
+          <th class="pl-2 pr-2 pt-1" style="background-color: silver">
+            業種
+          </th>
+          <td class="pl-2 pt-1">
+            <% if @customer.sector_id == nil %>
+            未登録
+            <% else %>
+              <%=  Sector.find(@customer.sector_id).name %>
+            <% end %>
+          </td>
+        </tr>
+
+        <tr style= "border: 1px solid black;">
+          <th class="pl-2 pt-1" style="background-color: silver">
+            郵便番号
+          </th>
+          <td class="pl-2 pt-1">
+            <%= @customer.post_code %>
+          </td>
+        </tr>
+
+        <tr style= "border: 1px solid black;">
+          <th class="pl-2 pt-1" style="background-color: silver">
+            住所
+          </th>
+          <td class="pl-2 pr-2 pt-1">
+            <%= @customer.address %>
+          </td>
+        </tr>
+
+        <tr style= "border: 1px solid black;">
+          <th class="pl-2 pt-1" style="background-color: silver">
+            代表者
+          </th>
+          <td class="pl-2 pt-1">
+            <%= @customer.first_name %><%= @customer.last_name %>
+          </td>
+        </tr>
+
+        <tr style= "border: 1px solid black;">
+          <th class="pl-2 pr-2 pt-1" style="background-color: silver">
+            代表者連絡先
+          </th>
+          <td class="pl-2 pt-1">
+            <%= @customer.tel %>
+          </td>
+        </tr>
+      </table>
+    </div>
+  </div>
 </div>
 
-<!--ログインしているユーザーのみ編集を表示する-->
-<% if @customer.id == current_customer.id %>
-  <%= link_to "編集", edit_customer_path(@customer) %>
-<% end %>
+  <!--ニーズ・課題-->
+  <div class="col-12 offset-2">
+    <div class="row">
+      <div class="col-12">
+        <h5 class="mt-5 font-weight-bold"><%= @customer.company_name %>のニーズ・課題</h5>
 
-<!--フォローした人のみチャット機能が使える-->
-<% unless current_customer == @customer %>
-<% if current_customer.following?(@customer) %>
-  <%= link_to 'Begin Chat', chat_path(@customer.id) %>
-<% end %>
-<% end %>
+        <% @issues.each do |issue| %>
+          <div class="card mb-5 mt-5" style="width: 50rem; height: 30rem; ">
+            <div class="card-body">
+              <div class="text-right mt-1" style="font-size: 11px;">
+                <% if @customer.id == current_customer.id %>
+                <%= link_to edit_issue_path(issue.id) do %>
+                  <i class="fas fa-edit fa-2x" style="color: #343a40;"></i><br>
+                <% end %>
+                <% end %>
+              </div>
+              <div class="card-subject">
+                【ニーズ】
+              </div>
+              <div style="height: 9rem;">
+                <%= issue.needs %>
+              </div>
+              <div>
+                【課題】
+              </div>
+              <div>
+                <%= issue.challenge %>
+              </div>
 
-<!--フォロー機能の作成-->
-<%= render 'public/customers/info', customer: @customer %>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+  <!--フッターを固定  -->
+  <div class="container">
+
+    <div class="row">
+      <div class="col-12">
+        <p class="footer-absolute text-center text-bottom">©︎2022 fu-kun<p>
+      </div>
+    </div>
+  </div>
