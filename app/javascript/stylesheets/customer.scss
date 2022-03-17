@@ -3,7 +3,7 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 2; /* 制限したい行数が3の場合 */
   overflow: hidden;
-  height:3em; /*行の高さを固定 */
+  height:3em; /*行全体の高さを固定 */
 }
 
 .challenge {
@@ -11,4 +11,11 @@
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 4; /* 制限したい行数が3の場合 */
   overflow: hidden;
+}
+
+
+// 退会画面　ボタンのサイズ変更
+.btn-default {
+    width: 106px;
+    height: 38px;
 }

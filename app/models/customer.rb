@@ -65,4 +65,9 @@ class Customer < ApplicationRecord
       'no_image.jpg'
     end
   end
+
+  # 退会済みの会員がログインできないように制限
+  def active_for_authentication?
+    super && (withdraw == false)
+  end
 end

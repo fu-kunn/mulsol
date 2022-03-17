@@ -1,12 +1,13 @@
 <div class="container">
 	<div class="text-center mt-5 mb-5">
-		<h5>本当に退会しますか？</h5>
+		<i class="fas fa-exclamation-triangle fa-3x" style="color: #dc3545;"></i>
+		<h5 class="mt-5">本当に退会しますか？</h5>
 		<h5>退会すると、会員登録情報や</h5>
 		<h5>これまでの履歴が閲覧できなくなります。</h5>
 		<h5>退会する場合は、「退会する」をクリックしてください。</h5>
 	</div>
 	<div class="text-center">
-		<%= link_to '退会しない', customer_path(@customer), class: "btn btn-primary" %>
-		<%= link_to "退会する", withdraw_customers_path, method: :patch, class: "btn btn-danger" %>
+		<%= link_to "退会する", withdraw_customers_path, method: :patch, class: "btn btn-default btn-danger rounded-pill mb-4" %><br/>
+		<%= link_to '退会しない', customer_path(@customer), class: "btn btn-secondary rounded-pill" %>
 	</div>
 </div>
