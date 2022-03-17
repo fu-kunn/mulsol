@@ -1,54 +1,51 @@
 <div class="container">
   <div class="row">
-    <div class="col-8 offset-2">
+    <div class="col-8 offset-2 mt-3">
       <h5>CHAT WITH <%= @customer.company_name %></h5>
-      <!--<table class="message table">-->
-      <!--  <thead>-->
-      <!--    <tr>-->
-      <!--      <th style="font-size: 20px;"><= @customer.company_name %></th>-->
-      <!--      <th style="font-size: 20px;"><= current_customer.company_name %></th>-->
-      <!--    </tr>-->
-      <!--  </thead>-->
-      <!--</table>-->
 
       <div class="overflow-auto" id="area">
-      <div id="chats">
-      <div class="message">
-        <% @chats.each do |chat| %>
-          <% if chat.customer_id == current_customer.id %>
-            <div class="mycomment">
-              <p><%= chat.message %></p>
-            </div>
-            <div class="days">
-              <p><%= chat.created_at.strftime("%Y/%m/%d %H:%M") %></p>
-            </div>
-          <% else %>
-            <div class="fukidasi">
-              <div class="faceicon">
-                <i class="fas fa-user"></i>
-              </div>
-              <div class="chatting">
-                <div class="says">
+        <div id="chats">
+          <div class="message">
+            <% @chats.each do |chat| %>
+              <% if chat.customer_id == current_customer.id %>
+                <div class="mycomment">
                   <p><%= chat.message %></p>
                 </div>
                 <div class="days">
                   <p><%= chat.created_at.strftime("%Y/%m/%d %H:%M") %></p>
                 </div>
-              </div>
-            </div>
-          <% end %>
+              <% else %>
+                <div class="fukidasi">
+                  <div class="faceicon">
+                    <i class="fas fa-user"></i>
+                  </div>
+                  <div class="chatting">
+                    <div class="says">
+                      <p><%= chat.message %></p>
+                    </div>
+                    <div class="days">
+                      <p><%= chat.created_at.strftime("%Y/%m/%d %H:%M") %></p>
+                    </div>
+                  </div>
+                </div>
+              <% end %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+
+      <div class="text-right">
+        <%= form_with(model: @chat, local: false) do |f| %>
+          <%= f.text_area :message, :placeholder => "メッセージを入力", class:"col-6" %>
+          <%= f.hidden_field :room_id %>
+          <%= f.submit "送信", class:"btn btn-success chat-btn mb-5"%>
         <% end %>
       </div>
-      </div>
-      </div>
 
-
-      <%= form_with(model: @chat, local: false) do |f| %>
-        <%= f.text_area :message, :placeholder => "メッセージを入力", class:"col-6" %>
-        <%= f.hidden_field :room_id %>
-        <%= f.submit "送信", class:"btn btn-success chat-btn mb-5"%>
-      <% end %>
-
+      <!--企業の詳細ページ-->
+      <%= render 'public/shared/back' %>
     </div>
   </div>
+  <!--フッターの固定-->
+  <%= render "public/shared/footer" %>
 </div>
