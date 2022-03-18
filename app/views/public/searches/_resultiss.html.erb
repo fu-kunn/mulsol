@@ -1,0 +1,43 @@
+<!--ニーズ・課題の検索結果-->
+<% issues.each do |issue| %>
+  <div class="card ml-5 mb-5" style="background-color: silver; width: 26rem; height: 36rem;">
+    <div class="mb-3 mt-3" style="text-align: center">
+      <% if issue.customer.image.attached? %>
+        <%= image_tag issue.customer.image, size: "400x200" %>
+      <% else %>
+        <%= image_tag 'no_image', size: "300x200" %>
+      <% end %>
+    </div>
+
+    <p class="ml-2">
+      企業名 :
+      <%= link_to customer_path(issue.customer.id)  do %>
+        <%= issue.customer.company_name %>
+      <% end %>
+    </p>
+    <p class="ml-2">
+      業種 :
+      <% if issue.customer.sector_id == nil %>
+        <!--未登録の場合は空白-->
+      <% else %>
+        <%=  Sector.find(issue.customer.sector_id).name %>
+    <% end %>
+    </p>
+    <p>
+      【ニーズ】
+    </p>
+    <p class="needs ml-2">
+      <% issue.customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
+        <%= issue.needs %>
+      <% end %>
+    </p>
+    <p>
+      【課題】
+    </p>
+    <p class="challenge ml-2">
+      <% issue.customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
+        <%= issue.challenge %>
+      <% end %>
+    </p>
+  </div>
+<% end %>

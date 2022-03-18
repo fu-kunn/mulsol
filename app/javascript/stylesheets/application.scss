@@ -5,6 +5,9 @@
 @import './admin.scss';
 @import './customer.scss';
 @import './footer.scss';
+@import './login.scss';
+@import './signup.scss';
+@import './contact.scss';
 
 /************************************
 ** トークルーム一覧
@@ -127,4 +130,9 @@
 .pagination>li>a {
   color: #f8f9fa;   /*文字の色を変える*/
   background-color: #343a40;
+}
+
+// エラーのリダイレクト時にフォームが崩れるのを防ぐ
+.field_with_errors {
+  display: contents;
 }

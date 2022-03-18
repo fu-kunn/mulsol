@@ -1,25 +1,56 @@
-<h5>ニーズ・課題新規登録</h5>
-
-<% if @issue && @issue.errors.any? %>
-  <%= @issue.errors.count %>error prohibited this book from being saved:
-    <ul>
+<!--エラーメッセージ-->
+<div class="col-4 ml-5 mt-3" style="background-color: #f8d7da;">
+  <% if @issue && @issue.errors.any? %>
+    <ul style="color: red;">
       <% @issue.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
     </ul>
-<% end %>
+  <% end %>
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-12 mt-5">
+      <h5 class="text-center font-weight-bold mt-3">ニーズ・課題新規登</h5>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-12 mt-3">
+      <%= form_with(model:@issue, url:issues_path, method: :post, local:true) do |f| %>
+        <form>
+          <div class="form-group text-center">
+            <div class="col-8 offset-2 bg-dark mt-2" style="color: #f8f9fa">
+              <%= f.label :ニーズ,class: "col-sm-2" %>
+            </div><br/>
+            <div style="height: 200px;">
+              <%= f.text_area :needs, autofocus: true, :size=>"80", class: "h-100"%>
+            </div>
+          </div>
+          <div class="form-group text-center mt-5">
+            <div class="col-8 offset-2 bg-dark" style="color: #f8f9fa">
+              <%= f.label :課題,class: "col-sm-2" %>
+            </div><br/>
+            <div style="height: 200px;">
+              <%= f.text_area :challenge, :size=>"80", class: "h-100" %>
+            </div>
+          </div>
+          <div class="text-center">
+            <%= f.submit "編集を保存", class: 'btn btn-success rounded-pill' %>
+          </div>
 
 
-<%= form_with(model:@issue, url:issues_path, method: :post, local:true) do |f| %>
-    <div class="form-group col-xs-9">
-      <%= f.label :ニーズ, class: "col-sm-2" %>
-      <%= f.text_area :needs %>
+            <!--企業の詳細ページ-->
+            <div class="footer-absolute">
+              <div style="height: 10rem;">
+                <%= link_to :back do %>
+                  <i class="fas fa-chevron-circle-left fa-3x mt-5" style="color: silver"></i>
+                <% end %>
+            </div>
+          </div>
+        </form>
+      <% end %>
     </div>
-    <div class="form-group col-xs-9">
-      <%= f.label :課題, class: "col-sm-2" %>
-      <%= f.text_area :challenge %>
-    </div>
-  <%= f.submit "編集内容を保存", class: 'btn btn-success offset-2' %>
-  <!--企業の編集ページ-->
-  <%= link_to '戻る', :back %>
-<% end %>
+  </div>
+</div>

@@ -3,7 +3,7 @@ class Public::CustomersController < ApplicationController
   end
 
   def index
-    @sectors = Sector.all
+    @sectors = Sector.order(created_at: :desc)
     @customers = Customer.order(created_at: :desc).limit(9).page(params[:page]).per(9)
     @customer = current_customer
   end

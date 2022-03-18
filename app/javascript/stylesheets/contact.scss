@@ -1,0 +1,20 @@
+strong {
+  color: red;
+}
+
+.ttl {
+  position: absolute;
+  top: -2px;
+  padding-top: 5px;
+  left: 30%;
+  right: 30%;
+  z-index: 2;
+  content: '';
+  width: 40%;
+  height: 3px;
+  background-color: #343a40;
+}
+
+.contact_t {
+  margin-top: 100px;
+}

@@ -4,6 +4,16 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :company_name, presence: true
+  validates :company_name_kana, presence: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
+  validates :first_name_kana, presence: true
+  validates :last_name_kana, presence: true
+  validates :post_code, presence: true
+  validates :address, presence: true
+  validates :tel, presence: true
+
   has_many :issues, dependent: :destroy
   belongs_to :sector, optional: true
   # has_many :sectors, dependent: :destroy
@@ -64,5 +74,10 @@ class Customer < ApplicationRecord
     else
       'no_image.jpg'
     end
+  end
+
+  # 退会済みの会員がログインできないように制限
+  def active_for_authentication?
+    super && (withdraw == false)
   end
 end
