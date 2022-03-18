@@ -1,25 +1,59 @@
-<div class="container">
-  <div class="row mt-5 align-items-end">
-    <h1 class="font-weight-bold">
-     <%=@sector.name %>一覧
-    </h1>
-    <h3 class="ml-3">
-    (全<%= @sector.customers.count %>件)
-    </h3>
-  </div>
-  <div class="row mt-5">
+<!--業種検索-->
+<%= render "public/sectors/sector", sectors: @sectors %>
+
+<div class="row">
+  <div class="col-12 mb-5 text-center">
+    <h5 class="text-center col-12 mt-5 font-weight-bold"><%=@sector.name %>一覧(全<%= @sector.customers.count %>件)</h5>
+ </div>
+</div>
+
+<div class="col-sm-12">
+  <div class="row">
     <% @sector.customers.each do |customer| %>
-      <div class="col-lg-3 col-md-6 mb-4">
-        <p>
-          <%= customer.company_name %>
-        </p>
-        <p>
+      <div class="card ml-5 mb-5" style="background-color: silver; width: 26rem; height: 36rem;">
+        <div class="mb-3 mt-3" style="text-align: center">
+        <% if customer.image.attached? %>
+          <%= image_tag customer.image, size: "400x200" %>
+        <% else %>
+          <%= image_tag 'no_image', size: "300x200" %>
+        <% end %>
+        </div>
 
-        </p>
-        <p>
-
-        </p>
+      <p class="ml-2">
+      企業名 :
+      <%= link_to customer_path(customer.id)  do %>
+        <%= customer.company_name %>
+      <% end %>
+      </p>
+      <p class="ml-2">
+      業種 :
+      <% if customer.sector_id == nil %>
+        <!--未登録の場合は空白-->
+      <% else %>
+        <%=  Sector.find(customer.sector_id).name %>
+      <% end %>
+      </p>
+      <p>
+      【ニーズ】
+      </p>
+      <p class="needs ml-2">
+      <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
+        <%= issue.needs %>
+      <% end %>
+      </p>
+      <p>
+        【課題】
+      </p>
+      <p class="challenge ml-2">
+      <% customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
+        <%= issue.challenge %>
+      <% end %>
+      </p>
       </div>
     <% end %>
   </div>
+</div>
+
+<div class="footer-absolute offset-5">
+  <%= paginate @sectors %>
 </div>

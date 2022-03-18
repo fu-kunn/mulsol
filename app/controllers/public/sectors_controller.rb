@@ -6,7 +6,6 @@ class Public::SectorsController < ApplicationController
 
   def create
     @sector = Sector.new(sector_params)
-    # @sector.name = ????
     if @sector.save
       redirect_to customer_path, notice: "You have created successfully."
     else
@@ -14,24 +13,10 @@ class Public::SectorsController < ApplicationController
     end
   end
 
-
   def show
     @sector = Sector.find(params[:id])
+    @sectors = Sector.order(created_at: :desc).limit(9).page(params[:page]).per(9)
   end
-
-  # def edit
-  #   @sector = Sector.find(params[:id])
-  # end
-
-  # def update
-  #   @sector = Sector.find(params[:id])
-  #   if @sector.update(sector_params)
-  #     redirect_to mypage_customers_path
-  #   else
-  #     render :edit
-  #   end
-  # end
-
 
   def sector_params
     params.require(:sector).permit(:name, :sector_id)

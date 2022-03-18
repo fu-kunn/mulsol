@@ -1,36 +1,63 @@
-<table>
-  <tbody>
-    <tr>
-      <td class="text-center" style="width: 30%">企業名</td>
-      <td><%= @contact.company_name %></td>
-    </tr>
-    <tr>
-      <td class="text-center">返信用のメールアドレス</td>
-      <td><%= @contact.email %></td>
-    </tr>
-    <tr>
-      <td class="text-center">用件</td>
-      <td><%= @contact.subject %></td>
-    </tr>
-    <tr>
-      <td class="text-center">メッセージ</td>
-      <td style="white-space: pre-wrap;"><%= @contact.message %></td>
-    </tr>
-  </tbody>
-</table>
+<div class="container">
+  <div class="row">
+    <div class="col-12 text-center">
+      <h5 class="ttl font-weight-bold mt-5">以下の内容で送信してよろしいでしょうか？</h5>
+      <p class="contact_t mb-5">
+        入力内容にお間違いがないか確認の上、「送信」ボタンを押してください。<br>
+        再度ご入力される場合は「戻る」ボタンを押してください。<br>
+      </p>
+    </div>
 
-<%= form_with(model: @contact, url:contacts_path, method: :post, local:true) do |f| %>
-  <%= f.hidden_field :company_name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :subject %>
-  <%= f.hidden_field :message %>
-  <%= f.submit '送信' %>
-<% end %>
+    <div class="col-12 offset-2">
+    <%= form_with(model:@contact, url:confirm_path, method: :post, local:true) do |f| %>
+      <table>
+        <tbody>
+          <tr style= "border: 1px solid black;">
+            <th class="" style="background-color: #d3d3d3; width: 200px;">企業名</th>
+            <td class="col-9 pl-0" style="width: 600px;"><%= @contact.company_name %></td>
+          </tr>
+          <tr style= "border: 1px solid black;">
+            <th style="background-color: #d3d3d3;">返信用のメールアドレス</th>
+            <td><%= @contact.email %></td>
+          </tr>
+          <tr style= "border: 1px solid black;">
+            <th style="background-color: #d3d3d3;">用件</th>
+            <td><%= @contact.subject %></td>
+          </tr>
+          <tr style= "border: 1px solid black;">
+            <th style="background-color: #d3d3d3;">メッセージ</th>
+            <td style="white-space: pre-wrap;"><%= @contact.message %></td>
+          </tr>
+        </tbody>
+      </table>
+    <% end %>
+    </div>
+  </div>
 
-<%= form_with(model: @contact, url:back_path, method: :post, local:true) do |f| %>
-  <%= f.hidden_field :company_name %>
-  <%= f.hidden_field :email %>
-  <%= f.hidden_field :subject %>
-  <%= f.hidden_field :message %>
-  <%= f.submit '入力画面に戻る' %>
-<% end %>
+  <div class="container">
+    <div class="row">
+      <div class="col-12 d-flex mt-5 justify-content-center">
+        <div class="mr-3">
+          <%= form_with(model: @contact, url:contacts_path, method: :post, local:true) do |f| %>
+            <%= f.hidden_field :company_name %>
+            <%= f.hidden_field :email %>
+            <%= f.hidden_field :subject %>
+            <%= f.hidden_field :message %>
+            <%= f.submit '送信', class:"btn btn-primary btn-lg rounded-pill" %>
+          <% end %>
+        </div>
+        <div>
+          <%= form_with(model: @contact, url:back_path, method: :post, local:true) do |f| %>
+            <%= f.hidden_field :company_name %>
+            <%= f.hidden_field :email %>
+            <%= f.hidden_field :subject %>
+            <%= f.hidden_field :message %>
+            <%= f.submit '戻る', class:"btn btn-secondary btn-lg rounded-pill" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--フッターの固定-->
+  <%= render "public/shared/footer" %>
+</div>
