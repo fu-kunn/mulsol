@@ -13,9 +13,9 @@ Turbolinks.start()
 ActiveStorage.start()
 
 // bootstrapの導入
+import "bootstrap";
 import "jquery";
 import "popper.js";
-import "bootstrap";
 import "../stylesheets/application"
 // fontawesomeの導入
 import '@fortawesome/fontawesome-free/js/all'
