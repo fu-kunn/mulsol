@@ -16,11 +16,10 @@ class Customer < ApplicationRecord
 
   has_many :issues, dependent: :destroy
   belongs_to :sector, optional: true
-  # has_many :sectors, dependent: :destroy
   has_many :customer_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_one_attached :image
-  has_many :contact, dependent: :destroy
+  has_many :contacts, dependent: :destroy
 
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
