@@ -15,13 +15,15 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-    # エラー分の日本語化
-    # models:
-    #   issue: "問題"
-    #   attributes:
-    #     issue:
-    #       needs: "ニーズ"
-    #       challenge: "課題"
+  # エラー分のカラム日本語化
+  activerecord:
+    models:
+      issue: "問題"
+    attributes:
+      issue:
+        needs: "ニーズ"
+        challenge: "課題"
+
 
   date:
     abbr_day_names:
