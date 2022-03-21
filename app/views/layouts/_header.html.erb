@@ -16,9 +16,14 @@
     </td>
     <td>
       <div class="text-center mt-3" style="font-size: 11px;">
-        <%= link_to do %>
+        <%= link_to notifications_path do %>
           <i class="fas fa-bell fa-2x" style="color: #343a40;"></i><br>
-          <div class="nav-link text-dark">お知らせ</div>
+          <% if unchecked_notifications.any? %>
+        <% end %>
+          <div class="nav-link text-dark">
+            <i class="fas fa-circle n-circle" style="color: #efa04c;"></i>
+            お知らせ
+          </div>
         <% end %>
       <% end %>
       </div>

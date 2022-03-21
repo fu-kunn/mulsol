@@ -20,6 +20,8 @@ class Customer < ApplicationRecord
   has_many :chats, dependent: :destroy
   has_one_attached :image
   has_many :contacts, dependent: :destroy
+  has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
+  has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 
   # フォローをした、されたの関係
   has_many :relationships, class_name: "Relationship", foreign_key: "follower_id", dependent: :destroy
@@ -78,5 +80,17 @@ class Customer < ApplicationRecord
   # 退会済みの会員がログインできないように制限
   def active_for_authentication?
     super && (withdraw == false)
+  end
+
+  # 通知機能
+  def create_notification_follow!(visited_id)
+    temp = Notification.where(["visitor_id = ? and visited_id = ? and action = ?", self.id, visited_id, "follow"])
+    if temp.blank?
+      notification = self.active_notifications.new(
+        visited_id: visited_id,
+        action: "follow"
+        )
+        notification.save if notification.valid?
+    end
   end
 end
