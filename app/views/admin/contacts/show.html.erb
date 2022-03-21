@@ -11,6 +11,7 @@
 
         <div class="card offset-2" style="width: 50rem; height: 35rem; ">
           <div class="card-body">
+            <div>問い合わせ日時:<%= @contact.created_at.strftime("%Y-%m-%d %H:%M:%S") %></div>
             <div class="card-name">企業名:<%= @contact.company_name %></div>
             <div class="card-email">返信用メールアドレス:<%= @contact.email %></div>
 
