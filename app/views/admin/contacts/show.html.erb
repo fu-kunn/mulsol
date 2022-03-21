@@ -2,7 +2,7 @@
 
   <div class="row">
     <div class="col-12 mb-5">
-      <h5 class="text-center col-4 mt-5 offset-2 font-weight-bold">問い合わせ詳細</h5>
+      <h5 class="text-center mt-5 font-weight-bold">問い合わせ詳細</h5>
    </div>
  </div>
 
@@ -19,6 +19,13 @@
 
             <div class="card-message">【内容】</div>
             <div><%= @contact.message %></div>
+          </div>
+        </div>
+
+        <!--問い合わせ一覧ページ-->
+        <div class="footer-absolute">
+          <div style=>
+            <%= render 'public/shared/back' %>
           </div>
         </div>
 

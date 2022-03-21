@@ -1,4 +1,6 @@
 class Public::IssuesController < ApplicationController
+  before_action :authenticate_customer!
+
   def new
     @issue = Issue.new
     @customer = current_customer
@@ -17,8 +19,10 @@ class Public::IssuesController < ApplicationController
 
   def edit
     @issue = Issue.find(params[:id])
-    # ログインしているユーザーのみ削除
     @customer = @issue.customer_id
+    if @customer!= current_customer.id
+    redirect_to root_path
+    end
   end
 
   def update

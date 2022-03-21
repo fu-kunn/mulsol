@@ -1,4 +1,6 @@
 class Admin::SectorsController < ApplicationController
+  before_action :authenticate_admin!
+
   def index
     @sector = Sector.new
     @sectors = Sector.all

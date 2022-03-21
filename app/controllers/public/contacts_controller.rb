@@ -1,4 +1,6 @@
 class Public::ContactsController < ApplicationController
+  before_action :authenticate_customer!, except: [:new]
+
   def new
     @contact = Contact.new
   end

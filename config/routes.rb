@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     root to: 'customers#top'
     get 'search' => 'searches#search'
 
-    resources :sectors, only: [:new, :create, :edit, :update, :show]
+    resources :sectors, only: [:create, :show]
     resources :issues, only: [:new, :create, :edit, :update, :destroy]
     resources :chats, only: [:create]
       get 'chat/:id', to: 'chats#show', as: 'chat'

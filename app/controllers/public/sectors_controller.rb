@@ -1,13 +1,11 @@
 class Public::SectorsController < ApplicationController
-  def new
-    @sector = Sector.new
-    @customer = current_customer
-  end
+  before_action :authenticate_customer!
 
   def create
     @sector = Sector.new(sector_params)
+    @sector.customer_id = current_user.id
     if @sector.save
-      redirect_to customer_path, notice: "You have created successfully."
+      redirect_to customer_path
     else
       redirect_to root_path
     end
