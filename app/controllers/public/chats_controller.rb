@@ -20,8 +20,27 @@ class Public::ChatsController < ApplicationController
   end
 
   def create
+    if CustomerRoom.where(customer_id: current_customer.id, room_id: params[:chat][:room_id]).present?
     @chat = current_customer.chats.new(chat_params)
-    @chat.save!
+    @room = @chat.room
+    if @chat.save!
+
+      @roommembernotme = CustomerRoom.where(room_id: @room.id).where.not(customer_id: current_customer.id)
+      @theid = @roommembernotme.find_by(room_id: @room.id)
+      notification = current_customer.active_notifications.new(
+        room_id: @room.id,
+        chat_id: @chat.id,
+        visited_id: @theid.customer_id,
+        visitor_id: current_customer.id,
+        action: "chat"
+        )
+
+        if notification.visitor_id == notification.visited_id
+            notification.checked = true
+        end
+        notification.save if notification.valid?
+    end
+    end
   end
 
   private
