@@ -10,18 +10,7 @@
 @import './contact.scss';
 @import './top.scss';
 
-/************************************
-** トークルーム一覧
-************************************/
-// .rooms{
-//   margin:0 auto;
-//   background-color:#fdfdfd;
-//   border: 2px solid #eee;
-//   padding:1em 2em;
-// }
-// /************************************
-// ** チャットの吹き出し
-// ************************************/
+// チャット
 #area {
   background-repeat: no-repeat;
   background-size: cover;
@@ -47,11 +36,6 @@
   margin-right: -50px;
   width: 40px;
 }
-// .fukidasi .faceicon img{
-//   width: 90%;
-//   height: auto;
-//   border-radius: 50%;
-// }
 .fukidasi .chatting {
   width: 100%;
   text-align: left;
@@ -107,14 +91,6 @@
   -webkit-transform: rotate(-35deg);
   transform: rotate(-35deg);
 }
-// /************************************
-// ** 送信フォーム
-// ************************************/
-// #send-form{
-//   text-align:right;
-//   margin-bottom:200px;
-// }
-
 
 // 管理者　問い合わせ詳細ページ
 .card-message {
