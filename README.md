@@ -21,7 +21,7 @@
 協力企業を募集したいときや、販路を拡大したいとき。
 
 ## 設計書
-
+<https://docs.google.com/spreadsheets/d/18IluTFz75ECI-6iCHGzpAaoQWWALQVzufbOdSZEMPd0/edit?usp=sharing>
 
 ## チャレンジ要素一覧
 <https://docs.google.com/spreadsheets/d/1HZaWI5iRNJnIAcEOLe47ZBBPF7zo4jr31O4GWy-8Txs/edit?usp=sharing>
