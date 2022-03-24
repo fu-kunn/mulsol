@@ -129,9 +129,11 @@
       <div class="col-12">
         <h5 class="issue_top font-weight-bold"><%= @customer.company_name %>のニーズ・課題</h5>
         <div class="offset-7" style="font-size: 15px;">
-          <%= link_to new_issue_path do %>
-            <div class="fas fa-handshake fa-3x ml-4" style="color: #343a40;"></div><br>
-            <div class="text-dark">ニーズ・課題登録</div>
+          <% if @customer.id == current_customer.id %>
+            <%= link_to new_issue_path do %>
+              <div class="fas fa-handshake fa-3x ml-4" style="color: #343a40;"></div><br>
+              <div class="text-dark">ニーズ・課題登録</div>
+            <% end %>
           <% end %>
         </div>
 
@@ -140,9 +142,9 @@
             <div class="card-body">
               <div class="text-right mt-1" style="font-size: 11px;">
                 <% if @customer.id == current_customer.id %>
-                <%= link_to edit_issue_path(issue.id) do %>
-                  <i class="fas fa-edit fa-2x" style="color: #343a40;"></i><br>
-                <% end %>
+                  <%= link_to edit_issue_path(issue.id) do %>
+                    <i class="fas fa-edit fa-2x" style="color: #343a40;"></i><br>
+                  <% end %>
                 <% end %>
               </div>
               <div class="card-subject">

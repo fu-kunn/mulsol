@@ -62,21 +62,22 @@
               <div class="nav-link text-light">ログアウト</div>
             <% end %>
           </li>
-<%# ログイン前のフッター(ユーザー、管理者共通)　%>
         <% else %>
-          <li class="nav-item text-center mt-3" style="font-size: 11px">
-            <%= link_to new_customer_registration_path do %>
-              <i class="fas fa-user-plus fa-3x" style="color: #f8f9fa"></i><br>
-              <div class="nav-link text-light">新規登録</div>
-            <% end %>
-          </li>
-
-          <li class="nav-item text-center mt-3" style="font-size: 11px">
-            <%= link_to new_customer_session_path do %>
-              <i class="fas fa-sign-in-alt fa-3x" style="color: #f8f9fa"></i><br>
-              <div class="nav-link text-light">ログイン</div>
-            <% end %>
-          </li>
+        <!--ログイン前のフッター(ユーザー)-->
+          <% unless current_page?(admin_session_path) %>
+            <li class="nav-item text-center mt-3" style="font-size: 11px">
+              <%= link_to new_customer_registration_path do %>
+                <i class="fas fa-user-plus fa-3x" style="color: #f8f9fa"></i><br>
+                <div class="nav-link text-light">新規登録</div>
+              <% end %>
+            </li>
+            <li class="nav-item text-center mt-3" style="font-size: 11px">
+              <%= link_to new_customer_session_path do %>
+                <i class="fas fa-sign-in-alt fa-3x" style="color: #f8f9fa"></i><br>
+                <div class="nav-link text-light">ログイン</div>
+              <% end %>
+            </li>
+          <% end %>
         <% end %>
         </ul>
       </div>

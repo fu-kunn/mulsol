@@ -15,7 +15,7 @@ ja:
         restrict_dependent_destroy:
           has_one: "%{record}が存在しているので削除できません"
           has_many: "%{record}が存在しているので削除できません"
-  # エラー分のカラムの日本語化
+  # エラー分のカラムの日本語化 ニーズ・課題
   activerecord:
     models:
       issue: "問題"
@@ -23,6 +23,16 @@ ja:
       issue:
         needs: "ニーズ"
         challenge: "課題"
+  # エラー分のカラムの日本語化 問い合わせ
+  activerecord:
+    models:
+      contact: "問い合わせ"
+    attributes:
+      contact:
+        company_name: "企業名"
+        email: "メールアドレス"
+        subject: "用件"
+        message: "メッセージ"
 
 
   date:
