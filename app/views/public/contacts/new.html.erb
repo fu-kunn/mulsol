@@ -1,3 +1,14 @@
+<!--エラーメッセージ-->
+<div class="col-4 ml-5 mt-3" style="background-color: #f8d7da;">
+  <% if @contact && @contact.errors.any? %>
+    <ul style="color: red;">
+      <% @contact.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  <% end %>
+</div>
+
 <div class="container">
   <div class="row">
     <div class="col-12 text-center">
@@ -27,11 +38,11 @@
         <%= f.text_field :email, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label :subject, '用件' %><strong>＊</strong>
+        <%= f.label :subject, '用件(40文字以内)' %><strong>＊</strong>
         <%= f.text_field :subject, class: 'form-control' %>
       </div>
       <div class="form-group">
-        <%= f.label :message, 'メッセージ' %><strong>＊</strong>
+        <%= f.label :message, 'メッセージ(500文字以内)' %><strong>＊</strong>
         <%= f.text_area :message, size: '10x10', class: 'form-control' %>
       </div>
       <div class="text-center mb-5 mt-5">
