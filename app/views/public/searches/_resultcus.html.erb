@@ -1,6 +1,7 @@
   <!--企業の検索結果  -->
 <% customers.each do |customer| %>
-  <div class="card ml-5 mb-5" style="background-color: silver; width: 26rem; height: 36rem;">
+<% if customer.withdraw == false %>
+  <div class="card ml-5 mb-5" style="background-color: silver; width: 26rem; height: 36rem; box-shadow: 2px 2px 4px;">
     <div class="mb-3 mt-3" style="text-align: center">
       <% if customer.image.attached? %>
         <%= image_tag customer.image, size: "400x200" %>
@@ -40,4 +41,5 @@
       <% end %>
     </p>
   </div>
+<% end %>
 <% end %>

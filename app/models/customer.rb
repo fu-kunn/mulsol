@@ -19,7 +19,6 @@ class Customer < ApplicationRecord
   has_many :customer_rooms, dependent: :destroy
   has_many :chats, dependent: :destroy
   has_one_attached :image
-  has_many :contacts, dependent: :destroy
   has_many :active_notifications, class_name: "Notification", foreign_key: "visitor_id", dependent: :destroy
   has_many :passive_notifications, class_name: "Notification", foreign_key: "visited_id", dependent: :destroy
 

@@ -7,31 +7,16 @@ class Issue < ApplicationRecord
   validates :challenge, presence: true
 
 
-  # 検索方法分岐 ニーズ
+  # 検索方法分岐 ニーズ・課題
   def self.looks(search, word)
     if search == "perfect_match"
-      @issue = Issue.where("needs LIKE?","#{word}")
+      @issue = Issue.where(['needs LIKE(?) OR challenge LIKE(?)',"#{word}","#{word}"])
     elsif search == "forward_match"
-      @issue = Issue.where("needs LIKE?","#{word}%")
+      @issue = Issue.where(['needs LIKE(?) OR challenge LIKE(?)',"#{word}%","#{word}%"])
     elsif search == "backward_match"
-      @issue = Issue.where("needs LIKE?","%#{word}")
+      @issue = Issue.where(['needs LIKE(?) OR challenge LIKE(?)',"%#{word}","%#{word}"])
     elsif search == "partial_match"
-      @issue = Issue.where("needs LIKE?","%#{word}%")
-    else
-      @issue = Issue.all
-    end
-  end
-
-  # 検索方法分岐 課題
-  def self.looks(search, word)
-    if search == "perfect_match"
-      @issue = Issue.where("challenge LIKE?","#{word}")
-    elsif search == "forward_match"
-      @issue = Issue.where("challenge LIKE?","#{word}%")
-    elsif search == "backward_match"
-      @issue = Issue.where("challenge LIKE?","%#{word}")
-    elsif search == "partial_match"
-      @issue = Issue.where("challenge LIKE?","%#{word}%")
+      @issue = Issue.where(['needs LIKE(?) OR challenge LIKE(?)',"%#{word}%","%#{word}%"])
     else
       @issue = Issue.all
     end

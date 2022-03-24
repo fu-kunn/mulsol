@@ -1,6 +1,7 @@
 <!--ニーズ・課題の検索結果-->
 <% issues.each do |issue| %>
-  <div class="card ml-5 mb-5" style="background-color: silver; width: 26rem; height: 36rem;">
+<% if issue.customer.withdraw == false %>
+  <div class="card ml-5 mb-5" style="background-color: silver; width: 26rem; height: 36rem; box-shadow: 2px 2px 4px;">
     <div class="mb-3 mt-3" style="text-align: center">
       <% if issue.customer.image.attached? %>
         <%= image_tag issue.customer.image, size: "400x200" %>
@@ -27,17 +28,14 @@
       【ニーズ】
     </p>
     <p class="needs ml-2">
-      <% issue.customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
-        <%= issue.needs %>
-      <% end %>
+      <%= issue.needs %>
     </p>
     <p>
       【課題】
     </p>
     <p class="challenge ml-2">
-      <% issue.customer.issues.order(created_at: :desc).limit(1).each do |issue| %>
-        <%= issue.challenge %>
-      <% end %>
+      <%= issue.challenge %>
     </p>
   </div>
+<% end %>
 <% end %>
