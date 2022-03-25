@@ -4,7 +4,7 @@
       <h5>CHAT WITH <%= @customer.company_name %></h5>
       <div class="overflow-auto" id="area">
         <div id="chats">
-          <div id="message">
+          <div class="message">
             <% @chats.each do |chat| %>
               <% if chat.customer_id == current_customer.id %>
                 <div class="mycomment">

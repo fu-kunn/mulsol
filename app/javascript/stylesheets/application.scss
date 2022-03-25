@@ -25,7 +25,6 @@
   margin: 15px auto;
   text-align: right;
   font-size: 14px;
-  overflow-y: scroll;
 }
 .fukidasi {
   width: 100%;
@@ -81,7 +80,9 @@
   border-radius: 12px;
   background: #30e852;
   font-size: 15px;
+  text-align: left;
 }
+
 .mycomment p:after {
   content: "";
   position: absolute;
