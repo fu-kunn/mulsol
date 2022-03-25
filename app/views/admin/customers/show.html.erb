@@ -13,15 +13,15 @@
               <% if @customer.image.attached? %>
                 <%= image_tag @customer.image, size: "200x200" %>
               <% else %>
-                <%= image_tag 'no_image', size: "200x200" %>
+                <%= image_tag 'no_image.jpg', size: "200x200" %>
               <% end %>
             </th>
           </tr>
         </table>
-        <table class="offset-2 bg-light">
+        <table class="offset-2 bg-light" style="width: 700px;">
 
           <tr>
-            <th class="pl-2" style="background-color: silver">企業名</th>
+            <th class="pl-2" style="background-color: silver; width: 150px;">企業名</th>
             <td class="pl-2"><%= @customer.company_name %></td>
           </tr>
           <tr>
@@ -43,8 +43,25 @@
           <tr>
             <th class="pl-2 pr-2" style="background-color: silver">代表者連絡先</th>
             <td class="pl-2"><%= @customer.tel %></td>
-        </tr>
+          </tr>
+          <tr>
+            <th class="pl-2 pr-2" style="background-color: silver">会員ステータス</th>
+            <td class="pl-2">
+              <%if @customer.withdraw == false %>
+                <span class="text-success font-weight-bold">有効</span>
+              <% else %>
+               <span class="text-secondary font-weight-bold">退会済</span>
+              <% end %>
+            </td>
+          </tr>
         </table>
       </div>
     </div>
+</div>
+<div class="container">
+  <div class="row" style="margin-top: 200px;">
+    <div style="height: 10rem;">
+      <%= render 'public/shared/back' %>
+    </div>
+  </div>
 </div>
