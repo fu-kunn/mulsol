@@ -23,11 +23,6 @@
         </div>
 
         <div class="form-group col-xs-9 text-center">
-         <%= f.label :メールアドレス, class: "col-sm-3 mr-3 text-light mt-3"%>
-         <%= f.email_field :email, autofocus: true, :placeholder => "sample@example.com", class: "col-5 pl-0 signup_field" %>
-        </div>
-
-        <div class="form-group col-xs-9 text-center">
           <%= f.label :"郵便番号(ハイフンなし)", class: "col-sm-3 mr-3 text-light mt-3" %>
           <%= f.text_field :post_code, autofocus: true, :placeholder => "0000000", class: "signup_field" %>
         </div>
@@ -38,12 +33,12 @@
         </div>
 
         <div class="form-group col-xs-9 text-center">
-          <%= f.label :"代表者氏名( 姓 )", class: "col-sm-3 text-light mt-3" %>
+          <%= f.label :"代表者( 姓 )", class: "col-sm-3 text-light mt-3" %>
           <%= f.text_field :first_name, autofocus: true, :placeholder => "田中", class: "signup_field" %>
         </div>
 
         <div class="form-group col-xs-9 text-center">
-          <%= f.label :"代表者氏名( 名 )", class: "col-sm-3 text-light" %>
+          <%= f.label :"代表者( 名 )", class: "col-sm-3 text-light" %>
           <%= f.text_field :last_name, autofocus: true, :placeholder => "太郎", class: "signup_field" %>
         </div>
 
@@ -60,6 +55,11 @@
         <div class="form-group col-xs-9 text-center">
           <%= f.label :"電話番号(ハイフンなし)", class: "col-sm-3 mr-3 text-light mt-3" %>
           <%= f.text_field :tel, autofocus: true, :placeholder => "0000000000", class: "signup_field" %>
+        </div>
+
+        <div class="form-group col-xs-9 text-center">
+         <%= f.label :メールアドレス, class: "col-sm-3 mr-3 text-light mt-3"%>
+         <%= f.email_field :email, autofocus: true, :placeholder => "sample@example.com", class: "col-5 pl-0 signup_field" %>
         </div>
 
         <div class="form-group col-xs-9 text-center">

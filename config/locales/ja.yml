@@ -33,6 +33,24 @@ ja:
         email: "メールアドレス"
         subject: "用件"
         message: "メッセージ"
+  # エラー分のカラムの日本語化 会員新規登録
+  activerecord:
+    models:
+      customer: "会員"
+    attributes:
+      customer:
+        company_name: "企業名"
+        company_name_kana: "企業名フリガナ"
+        post_code: "郵便番号"
+        address: "住所"
+        first_name: "代表者氏名(姓)"
+        last_name: "代表者氏名(名)"
+        first_name_kana: "代表者フリガナ(セイ)"
+        last_name_kana: "代表者フリガナ(メイ)"
+        password: "パスワード"
+        email: "メールアドレス"
+        tel: "電話番号"
+
 
 
   date:
